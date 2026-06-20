@@ -1,461 +1,362 @@
-/* ============ script.js ============ */
-/* AEE Labs - Premium Engineering Website Interactivity */
+/* =============================================
+   AEE Labs — Professional Engineering Website
+   Master JavaScript
+   ============================================= */
 
-document.addEventListener('DOMContentLoaded', () => {
-  // ---------- Loading Screen ----------
-  const loadingScreen = document.getElementById('loading-screen');
-  window.addEventListener('load', () => {
-    setTimeout(() => {
-      loadingScreen.classList.add('hidden');
-    }, 2000);
-  });
+/**
+ * Features:
+ * - Mobile navigation menu toggle
+ * - Smooth scrolling for anchor links
+ * - Active navigation link highlighting via Intersection Observer
+ * - Sticky header shadow on scroll
+ * - Back-to-top button visibility toggle
+ * - Fade-in animations on scroll using Intersection Observer
+ * - Contact form validation
+ */
 
-  // ---------- Custom Cursor ----------
-  const cursor = document.getElementById('custom-cursor');
-  const cursorDot = document.getElementById('cursor-dot');
-  if (cursor && cursorDot && window.innerWidth > 768) {
-    document.addEventListener('mousemove', (e) => {
-      cursor.style.left = e.clientX + 'px';
-      cursor.style.top = e.clientY + 'px';
-      cursorDot.style.left = e.clientX + 'px';
-      cursorDot.style.top = e.clientY + 'px';
-    });
-    document.addEventListener('mouseleave', () => {
-      cursor.style.opacity = '0';
-      cursorDot.style.opacity = '0';
-    });
-    document.addEventListener('mouseenter', () => {
-      cursor.style.opacity = '1';
-      cursorDot.style.opacity = '1';
-    });
-    // Enlarge cursor on hoverable elements
-    const hoverables = document.querySelectorAll('a, button, .tilt-effect, .glass-card, input, textarea, select');
-    hoverables.forEach(el => {
-      el.addEventListener('mouseenter', () => {
-        cursor.style.width = '36px';
-        cursor.style.height = '36px';
-        cursor.style.borderColor = 'var(--pcb-green)';
-      });
-      el.addEventListener('mouseleave', () => {
-        cursor.style.width = '20px';
-        cursor.style.height = '20px';
-        cursor.style.borderColor = 'var(--cyan)';
-      });
-    });
-  }
+document.addEventListener('DOMContentLoaded', function () {
 
-  // ---------- Scroll Progress Bar ----------
-  const progressBar = document.getElementById('progress-bar');
-  window.addEventListener('scroll', () => {
-    const scrollTop = window.scrollY;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const scrolled = (scrollTop / docHeight) * 100;
-    if (progressBar) progressBar.style.width = scrolled + '%';
-  });
+    /* ────────────────────────────────────
+       DOM Element References
+       ──────────────────────────────────── */
+    const header = document.getElementById('header');
+    const navToggle = document.getElementById('navToggle');
+    const nav = document.getElementById('nav');
+    const backToTop = document.getElementById('backToTop');
+    const contactForm = document.getElementById('contactForm');
+    const allNavLinks = document.querySelectorAll('.nav__link');
+    const fadeElements = document.querySelectorAll(
+        '.about__card, .service-card, .software-card, .project-card, .why-us-card, .founder__grid, .capability-tag'
+    );
 
-  // ---------- Header Scroll Effect ----------
-  const header = document.getElementById('header');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
+    /* ────────────────────────────────────
+       1. MOBILE NAVIGATION TOGGLE
+       ──────────────────────────────────── */
+    if (navToggle && nav) {
+        navToggle.addEventListener('click', function () {
+            const isOpen = nav.classList.contains('nav--open');
+            if (isOpen) {
+                closeMobileNav();
+            } else {
+                openMobileNav();
+            }
+        });
+
+        // Close mobile nav when a link is clicked
+        allNavLinks.forEach(function (link) {
+            link.addEventListener('click', function () {
+                if (nav.classList.contains('nav--open')) {
+                    closeMobileNav();
+                }
+            });
+        });
+
+        // Close mobile nav when clicking outside
+        document.addEventListener('click', function (event) {
+            const isClickInsideNav = nav.contains(event.target);
+            const isClickOnToggle = navToggle.contains(event.target);
+            if (
+                nav.classList.contains('nav--open') &&
+                !isClickInsideNav &&
+                !isClickOnToggle
+            ) {
+                closeMobileNav();
+            }
+        });
+
+        // Close mobile nav on Escape key
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape' && nav.classList.contains('nav--open')) {
+                closeMobileNav();
+                navToggle.focus();
+            }
+        });
     }
-  });
 
-  // ---------- Mobile Nav Toggle ----------
-  const navToggle = document.getElementById('nav-toggle');
-  const navMenu = document.getElementById('nav-menu');
-  if (navToggle && navMenu) {
-    navToggle.addEventListener('click', () => {
-      navMenu.classList.toggle('active');
-      // Toggle hamburger animation
-      navToggle.classList.toggle('open');
-    });
-    // Close menu on link click
-    document.querySelectorAll('.nav-link, .btn-nav').forEach(link => {
-      link.addEventListener('click', () => {
-        navMenu.classList.remove('active');
-        navToggle.classList.remove('open');
-      });
-    });
-  }
-
-  // ---------- Theme Toggle (Dark/Light) ----------
-  const themeToggle = document.getElementById('theme-toggle');
-  const htmlElement = document.documentElement;
-  const getPreferredTheme = () => {
-    return localStorage.getItem('theme') || 'dark';
-  };
-  const applyTheme = (theme) => {
-    htmlElement.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
-  };
-  applyTheme(getPreferredTheme());
-  if (themeToggle) {
-    themeToggle.addEventListener('click', () => {
-      const current = htmlElement.getAttribute('data-theme');
-      const newTheme = current === 'dark' ? 'light' : 'dark';
-      applyTheme(newTheme);
-    });
-  }
-
-  // ---------- Back to Top Button ----------
-  const backToTopBtn = document.getElementById('back-to-top');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 600) {
-      backToTopBtn.classList.add('visible');
-    } else {
-      backToTopBtn.classList.remove('visible');
+    function openMobileNav() {
+        nav.classList.add('nav--open');
+        navToggle.classList.add('nav-toggle--active');
+        navToggle.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
     }
-  });
-  backToTopBtn.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
 
-  // ---------- Smooth Scroll for Anchor Links (fallback for older browsers) ----------
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      const targetId = this.getAttribute('href');
-      if (targetId === '#') return;
-      const target = document.querySelector(targetId);
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth' });
-      }
-    });
-  });
-
-  // ---------- Typing Animation ----------
-  const typingText = document.getElementById('typing-text');
-  if (typingText) {
-    const fullText = "Engineering the Future Through Intelligent Hardware Design";
-    let charIndex = 0;
-    function type() {
-      if (charIndex < fullText.length) {
-        typingText.textContent += fullText.charAt(charIndex);
-        charIndex++;
-        setTimeout(type, 50);
-      }
+    function closeMobileNav() {
+        nav.classList.remove('nav--open');
+        navToggle.classList.remove('nav-toggle--active');
+        navToggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
     }
-    type();
-  }
 
-  // ---------- Animated Counters (Intersection Observer) ----------
-  const statNumbers = document.querySelectorAll('.stat-number');
-  const observerOptions = { threshold: 0.5 };
-  const counterObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const el = entry.target;
-        const target = parseInt(el.getAttribute('data-target'));
-        if (!el.classList.contains('counted')) {
-          animateCounter(el, target);
-          el.classList.add('counted');
-        }
-        counterObserver.unobserve(el);
-      }
-    });
-  }, observerOptions);
-  statNumbers.forEach(stat => counterObserver.observe(stat));
-  function animateCounter(element, target) {
-    let count = 0;
-    const duration = 1500;
-    const stepTime = Math.abs(Math.floor(duration / target));
-    const timer = setInterval(() => {
-      count += 1;
-      element.textContent = count;
-      if (count >= target) {
-        clearInterval(timer);
-        element.textContent = target;
-      }
-    }, stepTime);
-  }
-
-  // ---------- Parallax & Mouse Glow Effect on Hero ----------
-  const heroSection = document.querySelector('.hero');
-  if (heroSection) {
-    heroSection.addEventListener('mousemove', (e) => {
-      const { clientX, clientY } = e;
-      const moveX = (clientX - window.innerWidth / 2) * 0.01;
-      const moveY = (clientY - window.innerHeight / 2) * 0.01;
-      heroSection.style.backgroundPosition = `calc(50% + ${moveX}px) calc(50% + ${moveY}px)`;
-    });
-  }
-
-  // ---------- Floating Components (IC chips, circuit symbols) ----------
-  const floatingContainer = document.getElementById('floating-components');
-  if (floatingContainer) {
-    const icons = [
-      'M10 10h12v12H10z', // chip
-      'M18 8l4 4-4 4-4-4z', // diamond
-      'M6 12h20', // trace
-      'M16 4v16', // vertical
-      'M4 20l16-16', // diagonal
-      'M10 16v-8l4 4 4-4v8', // arrow
-    ];
-    for (let i = 0; i < 15; i++) {
-      const svgNS = "http://www.w3.org/2000/svg";
-      const svg = document.createElementNS(svgNS, "svg");
-      svg.setAttribute("viewBox", "0 0 32 32");
-      svg.setAttribute("width", "30");
-      svg.setAttribute("height", "30");
-      svg.classList.add("floating-ic");
-      const path = document.createElementNS(svgNS, "path");
-      path.setAttribute("d", icons[Math.floor(Math.random() * icons.length)]);
-      path.setAttribute("stroke", "var(--cyan)");
-      path.setAttribute("stroke-width", "2");
-      path.setAttribute("fill", "none");
-      svg.appendChild(path);
-      svg.style.left = Math.random() * 90 + '%';
-      svg.style.top = Math.random() * 80 + '%';
-      svg.style.animationDuration = (Math.random() * 8 + 8) + 's';
-      svg.style.animationDelay = Math.random() * 5 + 's';
-      floatingContainer.appendChild(svg);
-    }
-  }
-
-  // ---------- Hero Canvas Particle Animation (PCB traces and signals) ----------
-  const canvas = document.getElementById('hero-canvas');
-  if (canvas) {
-    const ctx = canvas.getContext('2d');
-    let width, height, particles = [];
-    function resizeCanvas() {
-      width = canvas.width = canvas.offsetWidth;
-      height = canvas.height = canvas.offsetHeight;
-    }
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
-    class Particle {
-      constructor() {
-        this.x = Math.random() * width;
-        this.y = Math.random() * height;
-        this.vx = Math.random() * 1.5 - 0.75;
-        this.vy = Math.random() * 1.5 - 0.75;
-        this.size = Math.random() * 2 + 1;
-        this.life = 1;
-        this.decay = 0.002;
-      }
-      update() {
-        this.x += this.vx;
-        this.y += this.vy;
-        this.life -= this.decay;
-        if (this.x < 0 || this.x > width) this.vx *= -1;
-        if (this.y < 0 || this.y > height) this.vy *= -1;
-      }
-      draw() {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(0, 229, 255, ${this.life})`;
-        ctx.fill();
-      }
-    }
-    function initParticles() {
-      particles = [];
-      for (let i = 0; i < 120; i++) {
-        particles.push(new Particle());
-      }
-    }
-    initParticles();
-    function drawLines() {
-      // Draw PCB-like grid lines
-      ctx.strokeStyle = 'rgba(0,229,255,0.05)';
-      ctx.lineWidth = 0.5;
-      const step = 40;
-      for (let x = 0; x < width; x += step) {
-        ctx.beginPath();
-        ctx.moveTo(x, 0);
-        ctx.lineTo(x, height);
-        ctx.stroke();
-      }
-      for (let y = 0; y < height; y += step) {
-        ctx.beginPath();
-        ctx.moveTo(0, y);
-        ctx.lineTo(width, y);
-        ctx.stroke();
-      }
-      // Connect nearby particles
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 80) {
-            ctx.beginPath();
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `rgba(0,229,255,${0.1 * (1 - dist/80)})`;
-            ctx.stroke();
-          }
-        }
-      }
-    }
-    function animateParticles() {
-      ctx.clearRect(0, 0, width, height);
-      drawLines();
-      particles.forEach(p => {
-        p.update();
-        p.draw();
-        if (p.life <= 0) {
-          p.x = Math.random() * width;
-          p.y = Math.random() * height;
-          p.life = 1;
-        }
-      });
-      requestAnimationFrame(animateParticles);
-    }
-    animateParticles();
-  }
-
-  // ---------- Tilt Effect on Cards ----------
-  const tiltElements = document.querySelectorAll('.tilt-effect');
-  tiltElements.forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-      const rotateX = (y - centerY) / 10;
-      const rotateY = (centerX - x) / 10;
-      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
-    });
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
-    });
-  });
-
-  // ---------- Intersection Observer for Reveal Animations (AOS-like) ----------
-  const revealElements = document.querySelectorAll('.section, .glass-card, .service-card, .project-card, .why-card, .industry-card');
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.15 });
-  revealElements.forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(40px)';
-    el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-    revealObserver.observe(el);
-  });
-
-  // ---------- FAQ Accordion ----------
-  const faqItems = document.querySelectorAll('.faq-item');
-  faqItems.forEach(item => {
-    const question = item.querySelector('.faq-question');
-    question.addEventListener('click', () => {
-      const isActive = item.classList.contains('active');
-      // Close all
-      faqItems.forEach(i => i.classList.remove('active'));
-      if (!isActive) {
-        item.classList.add('active');
-      }
-    });
-  });
-
-  // ---------- Testimonial Slider ----------
-  const track = document.getElementById('testimonial-track');
-  const slides = document.querySelectorAll('.testimonial');
-  const prevBtn = document.getElementById('prev-btn');
-  const nextBtn = document.getElementById('next-btn');
-  const dotsContainer = document.getElementById('slider-dots');
-  let currentIndex = 0;
-  if (track && slides.length > 0) {
-    // Create dots
-    slides.forEach((_, i) => {
-      const dot = document.createElement('span');
-      dot.classList.add('slider-dot');
-      if (i === 0) dot.classList.add('active');
-      dot.addEventListener('click', () => goToSlide(i));
-      dotsContainer.appendChild(dot);
-    });
-    const dots = document.querySelectorAll('.slider-dot');
-    function updateSlider() {
-      track.style.transform = `translateX(-${currentIndex * 100}%)`;
-      dots.forEach((dot, i) => dot.classList.toggle('active', i === currentIndex));
-    }
-    function goToSlide(index) {
-      currentIndex = index;
-      updateSlider();
-    }
-    prevBtn.addEventListener('click', () => {
-      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-      updateSlider();
-    });
-    nextBtn.addEventListener('click', () => {
-      currentIndex = (currentIndex + 1) % slides.length;
-      updateSlider();
-    });
-    // Auto-rotate every 6 seconds
-    let autoSlide = setInterval(() => {
-      currentIndex = (currentIndex + 1) % slides.length;
-      updateSlider();
-    }, 6000);
-    const sliderContainer = document.getElementById('testimonial-slider');
-    sliderContainer.addEventListener('mouseenter', () => clearInterval(autoSlide));
-    sliderContainer.addEventListener('mouseleave', () => {
-      autoSlide = setInterval(() => {
-        currentIndex = (currentIndex + 1) % slides.length;
-        updateSlider();
-      }, 6000);
-    });
-  }
-
-  // ---------- Contact Form Submission ----------
-  const contactForm = document.getElementById('contact-form');
-  const formSuccess = document.getElementById('form-success');
-  if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      // Simple client-side validation
-      const requiredInputs = contactForm.querySelectorAll('[required]');
-      let valid = true;
-      requiredInputs.forEach(input => {
-        if (!input.value.trim()) {
-          valid = false;
-          input.style.border = '2px solid red';
+    /* ────────────────────────────────────
+       2. STICKY HEADER SHADOW ON SCROLL
+       ──────────────────────────────────── */
+    function handleHeaderScroll() {
+        const scrollY = window.scrollY;
+        if (scrollY > 10) {
+            header.classList.add('header--scrolled');
         } else {
-          input.style.border = '1px solid var(--glass-border)';
+            header.classList.remove('header--scrolled');
         }
-      });
-      if (!valid) {
-        alert('Please fill all required fields.');
-        return;
-      }
-      // Simulate sending
-      formSuccess.style.display = 'block';
-      contactForm.reset();
-      setTimeout(() => {
-        formSuccess.style.display = 'none';
-      }, 4000);
+    }
+
+    /* ────────────────────────────────────
+       3. BACK-TO-TOP BUTTON
+       ──────────────────────────────────── */
+    function handleBackToTop() {
+        if (window.scrollY > 500) {
+            backToTop.classList.add('back-to-top--visible');
+        } else {
+            backToTop.classList.remove('back-to-top--visible');
+        }
+    }
+
+    if (backToTop) {
+        backToTop.addEventListener('click', function () {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+
+    // Throttled scroll handler for performance
+    let scrollTicking = false;
+    window.addEventListener('scroll', function () {
+        if (!scrollTicking) {
+            window.requestAnimationFrame(function () {
+                handleHeaderScroll();
+                handleBackToTop();
+                scrollTicking = false;
+            });
+            scrollTicking = true;
+        }
     });
-  }
 
-  // ---------- Newsletter Form ----------
-  const newsletterForm = document.getElementById('newsletter-form');
-  if (newsletterForm) {
-    newsletterForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const emailInput = newsletterForm.querySelector('input[type="email"]');
-      if (emailInput.value.trim()) {
-        alert('Thank you for subscribing!');
-        newsletterForm.reset();
-      }
-    });
-  }
+    /* ────────────────────────────────────
+       4. ACTIVE NAV LINK HIGHLIGHTING
+       Using Intersection Observer
+       ──────────────────────────────────── */
+    const sectionIds = ['home', 'about', 'services', 'portfolio', 'contact'];
+    const sectionElements = sectionIds
+        .map(function (id) { return document.getElementById(id); })
+        .filter(Boolean);
 
-  // ---------- Happy Clients Counter (dynamic) ----------
-  const happyCount = document.getElementById('happy-count');
-  if (happyCount) {
-    happyCount.textContent = '50';
-  }
+    if (sectionElements.length > 0 && allNavLinks.length > 0) {
+        const observerOptions = {
+            root: null,
+            rootMargin: '-80px 0px -50% 0px',
+            threshold: 0
+        };
 
-  // Performance: lazy load images (if any)
-  document.querySelectorAll('img[loading="lazy"]').forEach(img => {
-    img.setAttribute('loading', 'lazy');
-  });
+        const navObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    const activeId = entry.target.id;
+                    setActiveNavLink(activeId);
+                }
+            });
+        }, observerOptions);
+
+        sectionElements.forEach(function (section) {
+            navObserver.observe(section);
+        });
+
+        // Fallback: update on scroll for better accuracy
+        function updateActiveOnScroll() {
+            let currentSection = 'home';
+            sectionElements.forEach(function (section) {
+                const rect = section.getBoundingClientRect();
+                if (rect.top <= 120) {
+                    currentSection = section.id;
+                }
+            });
+            setActiveNavLink(currentSection);
+        }
+
+        window.addEventListener('scroll', function () {
+            if (!scrollTicking) {
+                window.requestAnimationFrame(function () {
+                    updateActiveOnScroll();
+                    scrollTicking = false;
+                });
+                scrollTicking = true;
+            }
+        });
+    }
+
+    function setActiveNavLink(activeId) {
+        allNavLinks.forEach(function (link) {
+            link.classList.remove('nav__link--active');
+            const href = link.getAttribute('href');
+            if (href === '#' + activeId) {
+                link.classList.add('nav__link--active');
+            }
+        });
+    }
+
+    /* ────────────────────────────────────
+       5. FADE-IN ANIMATIONS ON SCROLL
+       Using Intersection Observer
+       ──────────────────────────────────── */
+    if (fadeElements.length > 0) {
+        fadeElements.forEach(function (el) {
+            el.classList.add('fade-in');
+        });
+
+        const fadeObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in--visible');
+                    fadeObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            root: null,
+            rootMargin: '0px 0px -40px 0px',
+            threshold: 0.1
+        });
+
+        fadeElements.forEach(function (el) {
+            fadeObserver.observe(el);
+        });
+    }
+
+    /* ────────────────────────────────────
+       6. SMOOTH SCROLLING FOR ANCHOR LINKS
+       (CSS handles native smooth scrolling; no JS needed here)
+       ──────────────────────────────────── */
+
+    /* ────────────────────────────────────
+       7. CONTACT FORM VALIDATION
+       ──────────────────────────────────── */
+    if (contactForm) {
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const descriptionInput = document.getElementById('description');
+        const nameError = document.getElementById('nameError');
+        const emailError = document.getElementById('emailError');
+        const descriptionError = document.getElementById('descriptionError');
+        const formSuccess = document.getElementById('formSuccess');
+
+        contactForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            // Reset previous errors
+            resetFormErrors();
+            hideFormSuccess();
+
+            let isValid = true;
+
+            // Validate Name
+            if (!nameInput.value.trim()) {
+                showError(nameInput, nameError, 'Please enter your full name.');
+                isValid = false;
+            } else if (nameInput.value.trim().length < 2) {
+                showError(nameInput, nameError, 'Name must be at least 2 characters.');
+                isValid = false;
+            }
+
+            // Validate Email
+            if (!emailInput.value.trim()) {
+                showError(emailInput, emailError, 'Please enter your email address.');
+                isValid = false;
+            } else if (!isValidEmail(emailInput.value.trim())) {
+                showError(emailInput, emailError, 'Please enter a valid email address.');
+                isValid = false;
+            }
+
+            // Validate Description
+            if (!descriptionInput.value.trim()) {
+                showError(descriptionInput, descriptionError, 'Please describe your project requirements.');
+                isValid = false;
+            } else if (descriptionInput.value.trim().length < 10) {
+                showError(descriptionInput, descriptionError, 'Please provide at least 10 characters.');
+                isValid = false;
+            }
+
+            if (isValid) {
+                // Simulate successful submission
+                showFormSuccess();
+                contactForm.reset();
+                formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                // Hide success message after 8 seconds
+                setTimeout(function () {
+                    hideFormSuccess();
+                }, 8000);
+            }
+        });
+
+        // Real-time error clearing on input
+        [nameInput, emailInput, descriptionInput].forEach(function (input) {
+            if (!input) return;
+            input.addEventListener('input', function () {
+                var errorEl = document.getElementById(input.id + 'Error');
+                clearError(input, errorEl);
+            });
+        });
+    }
+
+    function showError(inputElement, errorElement, message) {
+        inputElement.parentElement.classList.add('form-group--error');
+        if (errorElement) {
+            errorElement.textContent = message;
+            errorElement.classList.add('form-error--visible');
+        }
+    }
+
+    function clearError(inputElement, errorElement) {
+        inputElement.parentElement.classList.remove('form-group--error');
+        if (errorElement) {
+            errorElement.textContent = '';
+            errorElement.classList.remove('form-error--visible');
+        }
+    }
+
+    function resetFormErrors() {
+        var errorElements = contactForm.querySelectorAll('.form-error--visible');
+        errorElements.forEach(function (el) {
+            el.textContent = '';
+            el.classList.remove('form-error--visible');
+        });
+        var errorGroups = contactForm.querySelectorAll('.form-group--error');
+        errorGroups.forEach(function (el) {
+            el.classList.remove('form-group--error');
+        });
+    }
+
+    function showFormSuccess() {
+        var successEl = document.getElementById('formSuccess');
+        if (successEl) {
+            successEl.style.display = 'block';
+        }
+    }
+
+    function hideFormSuccess() {
+        var successEl = document.getElementById('formSuccess');
+        if (successEl) {
+            successEl.style.display = 'none';
+        }
+    }
+
+    function isValidEmail(email) {
+        // RFC 5322 compliant pattern
+        var emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+        return emailRegex.test(email);
+    }
+
+    /* ────────────────────────────────────
+       8. INITIALIZATION
+       ──────────────────────────────────── */
+    handleHeaderScroll();
+    handleBackToTop();
+
+    // Set initial active nav link
+    if (allNavLinks.length > 0) {
+        var initialActive = allNavLinks[0];
+        if (initialActive) {
+            initialActive.classList.add('nav__link--active');
+        }
+    }
+
+    console.log('AEE Labs — Website initialized successfully.');
 });
