@@ -1,942 +1,385 @@
-<!DOCTYPE html>
-<html lang="en" data-theme="dark">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AEE Labs | Professional PCB Design & Hardware Development | Power Electronics Engineering</title>
-  <meta name="description" content="AEE Labs provides world-class professional PCB design, schematic design, power electronics, embedded hardware and complete product development from concept to manufacturing. Serving startups, defence, automotive, medical, and industrial companies worldwide.">
-  <meta name="keywords" content="PCB design, hardware development, power electronics, professional PCB, schematic design, embedded hardware, product development, engineering consultancy, Abboju Nikhil, AEE Labs, DFM, signal integrity, Altium, KiCad, power supply design, IoT, automotive electronics, industrial electronics">
-  <meta name="author" content="AEE Labs">
-  <link rel="canonical" href="https://aeelabs.in/">
-  <meta name="robots" content="index, follow">
+/* =============================================
+   AEE Labs — Professional Engineering Website
+   Master JavaScript
+   ============================================= */
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="AEE Labs | Professional PCB Design & Hardware Engineering">
-  <meta property="og:description" content="Engineering the Future Through Intelligent Hardware Design. Premium PCB design, schematic, power electronics, and product development services.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://aeelabs.in/">
-  <meta property="og:image" content="https://aeelabs.in/assets/og-image.jpg">
-  <meta property="og:site_name" content="AEE Labs">
+/**
+ * AEE Labs Website — Main Script
+ * Features:
+ * - Mobile navigation menu toggle
+ * - Smooth scrolling for anchor links
+ * - Active navigation link highlighting via Intersection Observer
+ * - Sticky header shadow on scroll
+ * - Back-to-top button visibility toggle
+ * - Fade-in animations on scroll using Intersection Observer
+ * - Contact form validation
+ */
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="AEE Labs | Professional PCB Design & Hardware Engineering">
-  <meta name="twitter:description" content="Engineering the Future Through Intelligent Hardware Design. Premium engineering services from concept to manufacturing.">
-  <meta name="twitter:image" content="https://aeelabs.in/assets/og-image.jpg">
+document.addEventListener('DOMContentLoaded', function () {
 
-  <!-- Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "AEE Labs",
-    "url": "https://aeelabs.in",
-    "logo": "https://aeelabs.in/assets/logo.png",
-    "description": "Professional PCB Design, Hardware Development, and Power Electronics Engineering consultancy based in India, serving international clients.",
-    "founder": {
-      "@type": "Person",
-      "name": "Abboju Nikhil",
-      "jobTitle": "Professional Hardware Design Engineer",
-      "alumniOf": "M.Tech Power Electronics",
-      "worksFor": {
-        "@type": "Organization",
-        "name": "AEE Labs"
-      }
-    },
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "telephone": "+91 7993769651",
-      "email": "buildwithnikhill@gmail.com",
-      "contactType": "customer service",
-      "areaServed": "Worldwide"
-    },
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Telangana",
-      "addressCountry": "India"
+    /* ────────────────────────────────────
+       DOM Element References
+       ──────────────────────────────────── */
+    const header = document.getElementById('header');
+    const navToggle = document.getElementById('navToggle');
+    const nav = document.getElementById('nav');
+    const backToTop = document.getElementById('backToTop');
+    const contactForm = document.getElementById('contactForm');
+    const allNavLinks = document.querySelectorAll('.nav__link');
+    const fadeElements = document.querySelectorAll(
+        '.about__card, .service-card, .software-card, .project-card, .why-us-card, .founder__grid, .capability-tag'
+    );
+
+    /* ────────────────────────────────────
+       1. MOBILE NAVIGATION TOGGLE
+       ──────────────────────────────────── */
+    if (navToggle && nav) {
+        navToggle.addEventListener('click', function () {
+            const isOpen = nav.classList.contains('nav--open');
+            if (isOpen) {
+                closeMobileNav();
+            } else {
+                openMobileNav();
+            }
+        });
+
+        // Close mobile nav when a link is clicked
+        allNavLinks.forEach(function (link) {
+            link.addEventListener('click', function () {
+                if (nav.classList.contains('nav--open')) {
+                    closeMobileNav();
+                }
+            });
+        });
+
+        // Close mobile nav when clicking outside
+        document.addEventListener('click', function (event) {
+            const isClickInsideNav = nav.contains(event.target);
+            const isClickOnToggle = navToggle.contains(event.target);
+            if (
+                nav.classList.contains('nav--open') &&
+                !isClickInsideNav &&
+                !isClickOnToggle
+            ) {
+                closeMobileNav();
+            }
+        });
+
+        // Close mobile nav on Escape key
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape' && nav.classList.contains('nav--open')) {
+                closeMobileNav();
+                navToggle.focus();
+            }
+        });
     }
-  }
-  </script>
 
-  <!-- Favicon (inline SVG gear icon) -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><circle cx='32' cy='32' r='30' fill='%230a1128' stroke='%2300e5ff' stroke-width='3'/><circle cx='32' cy='32' r='20' fill='none' stroke='%2300e5ff' stroke-width='3' stroke-dasharray='10 5'/><circle cx='32' cy='32' r='8' fill='%2300e5ff'/></svg>">
+    function openMobileNav() {
+        nav.classList.add('nav--open');
+        navToggle.classList.add('nav-toggle--active');
+        navToggle.setAttribute('aria-expanded', 'true');
+        // Prevent body scroll when menu is open
+        document.body.style.overflow = 'hidden';
+    }
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    function closeMobileNav() {
+        nav.classList.remove('nav--open');
+        navToggle.classList.remove('nav-toggle--active');
+        navToggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+    }
 
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <!-- Loading Screen -->
-  <div id="loading-screen" class="loading-screen">
-    <div class="loader-logo">
-      <svg viewBox="0 0 100 100" width="120" height="120">
-        <circle cx="50" cy="50" r="45" fill="none" stroke="var(--cyan)" stroke-width="4" stroke-dasharray="283" stroke-dashoffset="283">
-          <animate attributeName="stroke-dashoffset" from="283" to="0" dur="2s" fill="freeze"/>
-        </circle>
-        <text x="50" y="58" text-anchor="middle" fill="var(--cyan)" font-family="Orbitron" font-size="20" font-weight="800">AEE</text>
-      </svg>
-    </div>
-    <div class="loading-text">Initializing Engineering Systems...</div>
-    <div class="loading-bar">
-      <div class="loading-progress"></div>
-    </div>
-  </div>
+    /* ────────────────────────────────────
+       2. STICKY HEADER SHADOW ON SCROLL
+       ──────────────────────────────────── */
+    let lastScrollY = 0;
 
-  <!-- Custom Cursor -->
-  <div class="custom-cursor" id="custom-cursor"></div>
-  <div class="cursor-dot" id="cursor-dot"></div>
+    function handleHeaderScroll() {
+        const scrollY = window.scrollY;
+        if (scrollY > 10) {
+            header.classList.add('header--scrolled');
+        } else {
+            header.classList.remove('header--scrolled');
+        }
+        lastScrollY = scrollY;
+    }
 
-  <!-- Scroll Progress Bar -->
-  <div class="progress-bar" id="progress-bar"></div>
+    // Throttled scroll handler for performance
+    let scrollTicking = false;
+    window.addEventListener('scroll', function () {
+        if (!scrollTicking) {
+            window.requestAnimationFrame(function () {
+                handleHeaderScroll();
+                handleBackToTop();
+                scrollTicking = false;
+            });
+            scrollTicking = true;
+        }
+    });
 
-  <!-- Navigation -->
-  <header class="header" id="header">
-    <nav class="nav container">
-      <a href="#" class="nav-logo">
-        <svg class="logo-icon" viewBox="0 0 40 40" width="40" height="40">
-          <circle cx="20" cy="20" r="18" fill="none" stroke="var(--cyan)" stroke-width="2.5"/>
-          <polygon points="20,6 32,32 8,32" fill="none" stroke="var(--cyan)" stroke-width="2"/>
-          <text x="20" y="26" text-anchor="middle" fill="var(--cyan)" font-family="Orbitron" font-size="12" font-weight="900">AEE</text>
-        </svg>
-        <span class="logo-text">AEE <span class="logo-highlight">Labs</span></span>
-      </a>
-      <ul class="nav-menu" id="nav-menu">
-        <li><a href="#home" class="nav-link">Home</a></li>
-        <li><a href="#about" class="nav-link">About</a></li>
-        <li><a href="#services" class="nav-link">Services</a></li>
-        <li><a href="#capabilities" class="nav-link">Capabilities</a></li>
-        <li><a href="#projects" class="nav-link">Projects</a></li>
-        <li><a href="#industries" class="nav-link">Industries</a></li>
-        <li><a href="#why-us" class="nav-link">Why Us</a></li>
-        <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
-        <li><a href="#faq" class="nav-link">FAQ</a></li>
-        <li><a href="#contact" class="nav-link">Contact</a></li>
-        <li><a href="#contact" class="btn btn-nav">Get Quote</a></li>
-      </ul>
-      <div class="nav-toggle" id="nav-toggle">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
-        <svg class="sun-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="2"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></g></svg>
-        <svg class="moon-icon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="none" stroke="currentColor" stroke-width="2"/></svg>
-      </button>
-    </nav>
-  </header>
+    /* ────────────────────────────────────
+       3. BACK-TO-TOP BUTTON
+       ──────────────────────────────────── */
+    function handleBackToTop() {
+        if (window.scrollY > 500) {
+            backToTop.classList.add('back-to-top--visible');
+        } else {
+            backToTop.classList.remove('back-to-top--visible');
+        }
+    }
 
-  <main>
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-      <canvas id="hero-canvas" class="hero-canvas"></canvas>
-      <div class="hero-content container">
-        <div class="hero-badge">
-          <span class="pulse-dot"></span> Serving Worldwide
-        </div>
-        <h1 class="hero-title">
-          <span class="typing-text" id="typing-text"></span>
-          <span class="cursor-blink">|</span>
-        </h1>
-        <p class="hero-subtitle">Professional PCB Design, Schematic Design, Power Electronics, Embedded Hardware and Complete Product Development from Concept to Manufacturing.</p>
-        <div class="hero-actions">
-          <a href="#contact" class="btn btn-primary">Request Quote</a>
-          <a href="#projects" class="btn btn-outline">View Projects</a>
-        </div>
-        <div class="hero-stats">
-          <div class="stat">
-            <span class="stat-number" data-target="80">0</span><span>+</span>
-            <span class="stat-label">Projects Completed</span>
-          </div>
-          <div class="stat">
-            <span class="stat-number" data-target="50">0</span><span>+</span>
-            <span class="stat-label">Happy Clients</span>
-          </div>
-          <div class="stat">
-            <span class="stat-number" data-target="15">0</span><span>+</span>
-            <span class="stat-label">Countries Served</span>
-          </div>
-          <div class="stat">
-            <span class="stat-number" data-target="6">0</span><span>+</span>
-            <span class="stat-label">Years Experience</span>
-          </div>
-        </div>
-      </div>
-      <div class="floating-components" id="floating-components">
-        <!-- Floating IC chips and circuit elements added via JS -->
-      </div>
-    </section>
+    if (backToTop) {
+        backToTop.addEventListener('click', function () {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
 
-    <!-- About Section -->
-    <section id="about" class="about section">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">About <span class="gradient-text">AEE Labs</span></h2>
-          <p class="section-subtitle">Engineering Excellence in Every Layer</p>
-        </div>
-        <div class="about-grid">
-          <div class="about-text glass-card">
-            <p>AEE Labs is a premier electronic hardware design consultancy founded by <strong>Abboju Nikhil</strong>, a Professional Hardware Design Engineer with an M.Tech in Power Electronics and ex-DRDO apprentice experience. We provide complete electronic hardware development services from concept to production.</p>
-            <p>Our commitment to <strong>professional engineering, high-quality PCB layouts, reliable schematics, and manufacturing support</strong> ensures your product transitions smoothly from an idea to a market-ready device. With international support and fast turnaround, we serve clients across the globe.</p>
-            <div class="about-highlights">
-              <div class="highlight-item">
-                <svg class="icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" fill="none" stroke="currentColor" stroke-width="2.5"/></svg>
-                <span>Engineering Excellence</span>
-              </div>
-              <div class="highlight-item">
-                <svg class="icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" fill="none" stroke="currentColor" stroke-width="2.5"/></svg>
-                <span>Fast Turnaround</span>
-              </div>
-              <div class="highlight-item">
-                <svg class="icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" fill="none" stroke="currentColor" stroke-width="2.5"/></svg>
-                <span>International Support</span>
-              </div>
-              <div class="highlight-item">
-                <svg class="icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" fill="none" stroke="currentColor" stroke-width="2.5"/></svg>
-                <span>Production-Ready Designs</span>
-              </div>
-            </div>
-          </div>
-          <div class="about-founder glass-card tilt-effect" id="founder-card">
-            <div class="founder-image-placeholder">
-              <svg class="founder-silhouette" viewBox="0 0 100 100"><circle cx="50" cy="35" r="22" fill="none" stroke="var(--cyan)" stroke-width="3"/><path d="M20 85 Q50 55 80 85" fill="none" stroke="var(--cyan)" stroke-width="3"/></svg>
-            </div>
-            <h3>Abboju Nikhil</h3>
-            <p class="founder-title">Professional Hardware Design Engineer</p>
-            <div class="founder-credentials">
-              <span>M.Tech (Power Electronics)</span>
-              <span>Ex-DRDO Apprentice</span>
-            </div>
-            <div class="expertise-tags">
-              <span>Power Electronics</span>
-              <span>PCB Design</span>
-              <span>Hardware Design</span>
-              <span>Embedded Systems</span>
-              <span>Product Development</span>
-              <span>DFM/DFA</span>
-              <span>EMI/EMC</span>
-              <span>Signal Integrity</span>
-              <span>Power Supply Design</span>
-              <span>Thermal Management</span>
-              <span>Component Selection</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    /* ────────────────────────────────────
+       4. ACTIVE NAV LINK HIGHLIGHTING
+       Using Intersection Observer
+       ──────────────────────────────────── */
+    const sectionIds = ['home', 'about', 'services', 'portfolio', 'contact'];
+    const sectionElements = sectionIds
+        .map(function (id) { return document.getElementById(id); })
+        .filter(Boolean);
 
-    <!-- Services -->
-    <section id="services" class="services section">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">Our <span class="gradient-text">Services</span></h2>
-          <p class="section-subtitle">Comprehensive hardware design solutions from concept to production</p>
-        </div>
-        <div class="services-grid">
-          <div class="service-card glass-card tilt-effect">
-            <div class="service-icon"><svg viewBox="0 0 48 48"><rect x="6" y="10" width="36" height="28" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M6 22h36" stroke="currentColor" stroke-width="2"/><circle cx="16" cy="36" r="4" fill="none" stroke="currentColor" stroke-width="2"/></svg></div>
-            <h3>Professional PCB Design</h3>
-            <p>High-density, multi-layer PCB layouts tailored for performance, manufacturability, and reliability.</p>
-            <a href="#contact" class="learn-more">Learn More <span>→</span></a>
-          </div>
-          <div class="service-card glass-card tilt-effect">
-            <div class="service-icon"><svg viewBox="0 0 48 48"><path d="M4 8h16l4-4h20v40H4z" fill="none" stroke="currentColor" stroke-width="2"/><line x1="14" y1="24" x2="34" y2="24" stroke="currentColor" stroke-width="2"/><circle cx="14" cy="24" r="2" fill="currentColor"/><line x1="14" y1="34" x2="28" y2="34" stroke="currentColor" stroke-width="2"/><circle cx="14" cy="34" r="2" fill="currentColor"/></svg></div>
-            <h3>Schematic Design</h3>
-            <p>Clean, well-organized, and thoroughly validated schematic capture for seamless design integration.</p>
-            <a href="#contact" class="learn-more">Learn More <span>→</span></a>
-          </div>
-          <div class="service-card glass-card tilt-effect">
-            <div class="service-icon"><svg viewBox="0 0 48 48"><rect x="6" y="6" width="36" height="36" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="24" r="8" fill="none" stroke="currentColor" stroke-width="2"/><line x1="24" y1="2" x2="24" y2="6" stroke="currentColor" stroke-width="2"/><line x1="24" y1="42" x2="24" y2="46" stroke="currentColor" stroke-width="2"/><line x1="2" y1="24" x2="6" y2="24" stroke="currentColor" stroke-width="2"/><line x1="42" y1="24" x2="46" y2="24" stroke="currentColor" stroke-width="2"/></svg></div>
-            <h3>Hardware Architecture</h3>
-            <p>System-level architecture planning ensuring optimal performance, cost, and scalability.</p>
-            <a href="#contact" class="learn-more">Learn More <span>→</span></a>
-          </div>
-          <div class="service-card glass-card tilt-effect">
-            <div class="service-icon"><svg viewBox="0 0 48 48"><rect x="8" y="12" width="32" height="24" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="24" r="6" fill="none" stroke="currentColor" stroke-width="2"/></svg></div>
-            <h3>Embedded Hardware</h3>
-            <p>Custom microcontroller and FPGA-based boards with peripheral integration and firmware considerations.</p>
-            <a href="#contact" class="learn-more">Learn More <span>→</span></a>
-          </div>
-          <div class="service-card glass-card tilt-effect">
-            <div class="service-icon"><svg viewBox="0 0 48 48"><path d="M12 36V12l24 12-24 12z" fill="none" stroke="currentColor" stroke-width="2"/><line x1="36" y1="6" x2="36" y2="42" stroke="currentColor" stroke-width="2"/></svg></div>
-            <h3>Power Electronics Design</h3>
-            <p>High-efficiency converters, inverters, motor drives, and battery management systems.</p>
-            <a href="#contact" class="learn-more">Learn More <span>→</span></a>
-          </div>
-          <div class="service-card glass-card tilt-effect">
-            <div class="service-icon"><svg viewBox="0 0 48 48"><path d="M24 2L6 12v24l18 10 18-10V12z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="24" r="6" fill="none" stroke="currentColor" stroke-width="2"/></svg></div>
-            <h3>Product Development</h3>
-            <p>End-to-end product realization: concept, prototyping, validation, and manufacturing support.</p>
-            <a href="#contact" class="learn-more">Learn More <span>→</span></a>
-          </div>
-          <div class="service-card glass-card tilt-effect">
-            <div class="service-icon"><svg viewBox="0 0 48 48"><polygon points="24,6 42,16 42,36 24,46 6,36 6,16" fill="none" stroke="currentColor" stroke-width="2"/><line x1="24" y1="26" x2="24" y2="36" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="18" r="3" fill="currentColor"/></svg></div>
-            <h3>Prototype Support</h3>
-            <p>Rapid prototyping, testing, and debugging to verify your design before mass production.</p>
-            <a href="#contact" class="learn-more">Learn More <span>→</span></a>
-          </div>
-          <div class="service-card glass-card tilt-effect">
-            <div class="service-icon"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18" fill="none" stroke="currentColor" stroke-width="2"/><path d="M24 6v6m0 24v6M6 24h6m24 0h6" stroke="currentColor" stroke-width="2"/></svg></div>
-            <h3>PCB Review & Optimization</h3>
-            <p>In-depth design reviews covering signal integrity, EMI/EMC, DFM, and thermal performance.</p>
-            <a href="#contact" class="learn-more">Learn More <span>→</span></a>
-          </div>
-          <div class="service-card glass-card tilt-effect">
-            <div class="service-icon"><svg viewBox="0 0 48 48"><path d="M14 2h20l10 14-20 30L4 16z" fill="none" stroke="currentColor" stroke-width="2"/><line x1="24" y1="14" x2="24" y2="30" stroke="currentColor" stroke-width="2"/></svg></div>
-            <h3>Reverse Engineering</h3>
-            <p>Recover and re-document legacy boards, create modern equivalents with improved performance.</p>
-            <a href="#contact" class="learn-more">Learn More <span>→</span></a>
-          </div>
-          <div class="service-card glass-card tilt-effect">
-            <div class="service-icon"><svg viewBox="0 0 48 48"><rect x="6" y="8" width="36" height="32" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><line x1="16" y1="8" x2="16" y2="40" stroke="currentColor" stroke-width="2"/><line x1="32" y1="8" x2="32" y2="40" stroke="currentColor" stroke-width="2"/></svg></div>
-            <h3>Manufacturing Support</h3>
-            <p>BOM generation, Gerber files, assembly drawings, and liaison with fabrication houses.</p>
-            <a href="#contact" class="learn-more">Learn More <span>→</span></a>
-          </div>
-          <div class="service-card glass-card tilt-effect">
-            <div class="service-icon"><svg viewBox="0 0 48 48"><rect x="4" y="4" width="40" height="40" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><text x="24" y="34" text-anchor="middle" font-size="20" font-weight="800" fill="currentColor">?</text></svg></div>
-            <h3>Engineering Consultation</h3>
-            <p>Expert guidance on technology selection, feasibility studies, and design strategy.</p>
-            <a href="#contact" class="learn-more">Learn More <span>→</span></a>
-          </div>
-        </div>
-      </div>
-    </section>
+    if (sectionElements.length > 0 && allNavLinks.length > 0) {
+        const observerOptions = {
+            root: null,
+            rootMargin: '-80px 0px -50% 0px',
+            threshold: 0
+        };
 
-    <!-- Capabilities Dashboard -->
-    <section id="capabilities" class="capabilities section">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">PCB Design <span class="gradient-text">Capabilities</span></h2>
-          <p class="section-subtitle">From simple 2-layer boards to complex high-speed multi-layer designs</p>
-        </div>
-        <div class="capabilities-dashboard glass-card">
-          <div class="cap-grid">
-            <div class="cap-item" data-cap="2-layer"><span>2 Layer PCB</span><div class="cap-bar" style="width:100%"></div></div>
-            <div class="cap-item" data-cap="4-layer"><span>4 Layer PCB</span><div class="cap-bar" style="width:100%"></div></div>
-            <div class="cap-item" data-cap="6-layer"><span>6 Layer PCB</span><div class="cap-bar" style="width:95%"></div></div>
-            <div class="cap-item" data-cap="8-layer"><span>8+ Layer PCB</span><div class="cap-bar" style="width:90%"></div></div>
-            <div class="cap-item"><span>High-Speed PCB</span><div class="cap-bar" style="width:88%"></div></div>
-            <div class="cap-item"><span>Mixed Signal PCB</span><div class="cap-bar" style="width:92%"></div></div>
-            <div class="cap-item"><span>Analog PCB</span><div class="cap-bar" style="width:95%"></div></div>
-            <div class="cap-item"><span>Digital PCB</span><div class="cap-bar" style="width:90%"></div></div>
-            <div class="cap-item"><span>Power PCB</span><div class="cap-bar" style="width:98%"></div></div>
-            <div class="cap-item"><span>Motor Control PCB</span><div class="cap-bar" style="width:85%"></div></div>
-            <div class="cap-item"><span>Embedded PCB</span><div class="cap-bar" style="width:95%"></div></div>
-            <div class="cap-item"><span>Industrial PCB</span><div class="cap-bar" style="width:90%"></div></div>
-            <div class="cap-item"><span>Automotive PCB</span><div class="cap-bar" style="width:80%"></div></div>
-            <div class="cap-item"><span>Medical PCB</span><div class="cap-bar" style="width:75%"></div></div>
-            <div class="cap-item"><span>IoT PCB</span><div class="cap-bar" style="width:92%"></div></div>
-            <div class="cap-item"><span>RF Ready PCB</span><div class="cap-bar" style="width:70%"></div></div>
-            <div class="cap-item"><span>Flexible PCB Concepts</span><div class="cap-bar" style="width:65%"></div></div>
-            <div class="cap-item"><span>Rigid-Flex Concepts</span><div class="cap-bar" style="width:60%"></div></div>
-          </div>
-        </div>
-      </div>
-    </section>
+        const navObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    const activeId = entry.target.id;
+                    setActiveNavLink(activeId);
+                }
+            });
+        }, observerOptions);
 
-    <!-- Engineering Expertise -->
-    <section class="expertise section">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">Engineering <span class="gradient-text">Expertise</span></h2>
-          <p class="section-subtitle">Specialized knowledge for high-performance, reliable designs</p>
-        </div>
-        <div class="expertise-grid">
-          <div class="expertise-card glass-card">Controlled Impedance</div>
-          <div class="expertise-card glass-card">Length Matching</div>
-          <div class="expertise-card glass-card">Differential Pair Routing</div>
-          <div class="expertise-card glass-card">DDR Layout</div>
-          <div class="expertise-card glass-card">USB / CAN / Ethernet</div>
-          <div class="expertise-card glass-card">SPI / I2C / UART</div>
-          <div class="expertise-card glass-card">Power Integrity</div>
-          <div class="expertise-card glass-card">Signal Integrity</div>
-          <div class="expertise-card glass-card">Grounding Strategy</div>
-          <div class="expertise-card glass-card">Thermal Analysis</div>
-          <div class="expertise-card glass-card">Heat Sink Design</div>
-          <div class="expertise-card glass-card">Current Density Optimization</div>
-          <div class="expertise-card glass-card">EMI Reduction</div>
-          <div class="expertise-card glass-card">EMC Compliance Practices</div>
-          <div class="expertise-card glass-card">DFM / DFA</div>
-          <div class="expertise-card glass-card">IPC Design Guidelines</div>
-          <div class="expertise-card glass-card">Gerber Generation</div>
-          <div class="expertise-card glass-card">Assembly Drawings</div>
-          <div class="expertise-card glass-card">BOM Optimization</div>
-          <div class="expertise-card glass-card">Panelization Support</div>
-          <div class="expertise-card glass-card">Manufacturing Documentation</div>
-        </div>
-      </div>
-    </section>
+        sectionElements.forEach(function (section) {
+            navObserver.observe(section);
+        });
 
-    <!-- Software Expertise -->
-    <section class="software section">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">Software <span class="gradient-text">Expertise</span></h2>
-        </div>
-        <div class="software-grid">
-          <div class="software-card glass-card tilt-effect">
-            <div class="software-icon kicad-icon"><span>K</span></div>
-            <h3>KiCad</h3>
-            <p>5+ years experience in open-source PCB design, complex hierarchical schematics, and advanced routing.</p>
-            <div class="software-tags"><span>Open Source</span><span>Advanced</span></div>
-          </div>
-          <div class="software-card glass-card tilt-effect">
-            <div class="software-icon altium-icon"><span>A</span></div>
-            <h3>Altium Designer</h3>
-            <p>Professional-grade design with 3D visualization, high-speed rules, and unified data management.</p>
-            <div class="software-tags"><span>Professional</span><span>3D PCB</span></div>
-          </div>
-          <div class="software-card glass-card tilt-effect">
-            <div class="software-icon cadence-icon"><span>C</span></div>
-            <h3>Cadence Allegro</h3>
-            <p>High-end constraint-driven design for complex, high-density boards with advanced simulation links.</p>
-            <div class="software-tags"><span>Enterprise</span><span>Constraint Manager</span></div>
-          </div>
-          <div class="software-card glass-card tilt-effect">
-            <div class="software-icon spice-icon"><span>L</span></div>
-            <h3>LTspice</h3>
-            <p>Analog and power circuit simulation, transient and AC analysis, component stress evaluation.</p>
-            <div class="software-tags"><span>Simulation</span><span>Analog</span></div>
-          </div>
-          <div class="software-card glass-card tilt-effect">
-            <div class="software-icon matlab-icon"><span>M</span></div>
-            <h3>MATLAB / Simulink</h3>
-            <p>System-level modeling, control loop design, digital filter implementation, and data analysis.</p>
-            <div class="software-tags"><span>Modeling</span><span>Control Systems</span></div>
-          </div>
-        </div>
-      </div>
-    </section>
+        // Fallback: also update on scroll for better accuracy
+        function updateActiveOnScroll() {
+            let currentSection = 'home';
+            sectionElements.forEach(function (section) {
+                const rect = section.getBoundingClientRect();
+                if (rect.top <= 120) {
+                    currentSection = section.id;
+                }
+            });
+            setActiveNavLink(currentSection);
+        }
 
-    <!-- Industries -->
-    <section id="industries" class="industries section">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">Industries <span class="gradient-text">Served</span></h2>
-          <p class="section-subtitle">Trusted by diverse sectors worldwide</p>
-        </div>
-        <div class="industries-grid">
-          <div class="industry-card glass-card">
-            <svg viewBox="0 0 48 48"><rect x="6" y="6" width="36" height="36" rx="4" fill="none" stroke="var(--cyan)" stroke-width="2"/><path d="M16 18h16M16 26h10" stroke="var(--cyan)" stroke-width="2"/></svg>
-            <span>Industrial Automation</span>
-          </div>
-          <div class="industry-card glass-card">
-            <svg viewBox="0 0 48 48"><path d="M12 36V12l24 12-24 12z" fill="none" stroke="var(--cyan)" stroke-width="2"/></svg>
-            <span>Power Electronics</span>
-          </div>
-          <div class="industry-card glass-card">
-            <svg viewBox="0 0 48 48"><rect x="6" y="10" width="36" height="28" rx="3" fill="none" stroke="var(--cyan)" stroke-width="2"/><circle cx="24" cy="24" r="8" fill="none" stroke="var(--cyan)" stroke-width="2"/></svg>
-            <span>Automotive Electronics</span>
-          </div>
-          <div class="industry-card glass-card">
-            <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18" fill="none" stroke="var(--cyan)" stroke-width="2"/><circle cx="24" cy="24" r="8" fill="none" stroke="var(--cyan)" stroke-width="2"/></svg>
-            <span>Consumer Electronics</span>
-          </div>
-          <div class="industry-card glass-card">
-            <svg viewBox="0 0 48 48"><path d="M24 2 L44 22 L34 42 L14 42 L4 22z" fill="none" stroke="var(--cyan)" stroke-width="2"/><circle cx="24" cy="24" r="5" fill="none" stroke="var(--cyan)" stroke-width="2"/></svg>
-            <span>Medical Electronics</span>
-          </div>
-          <div class="industry-card glass-card">
-            <svg viewBox="0 0 48 48"><path d="M24 4L4 14v20l20 10 20-10V14z" fill="none" stroke="var(--cyan)" stroke-width="2"/></svg>
-            <span>Renewable Energy</span>
-          </div>
-          <div class="industry-card glass-card">
-            <svg viewBox="0 0 48 48"><rect x="10" y="10" width="28" height="28" rx="5" fill="none" stroke="var(--cyan)" stroke-width="2"/><circle cx="24" cy="24" r="6" fill="none" stroke="var(--cyan)" stroke-width="2"/></svg>
-            <span>Robotics</span>
-          </div>
-          <div class="industry-card glass-card">
-            <svg viewBox="0 0 48 48"><path d="M8 36h4l10-20h4l10 20h4" fill="none" stroke="var(--cyan)" stroke-width="2"/><circle cx="24" cy="12" r="4" fill="none" stroke="var(--cyan)" stroke-width="2"/></svg>
-            <span>IoT & Embedded</span>
-          </div>
-          <div class="industry-card glass-card">
-            <svg viewBox="0 0 48 48"><polygon points="24,4 46,18 42,40 6,40 2,18" fill="none" stroke="var(--cyan)" stroke-width="2"/></svg>
-            <span>Defence Electronics</span>
-          </div>
-          <div class="industry-card glass-card">
-            <svg viewBox="0 0 48 48"><rect x="6" y="8" width="36" height="32" rx="3" fill="none" stroke="var(--cyan)" stroke-width="2"/><text x="24" y="30" text-anchor="middle" font-size="16" fill="var(--cyan)">R&D</text></svg>
-            <span>Research Organizations</span>
-          </div>
-          <div class="industry-card glass-card">
-            <svg viewBox="0 0 48 48"><path d="M24 2L6 12v24l18 10 18-10V12z" fill="none" stroke="var(--cyan)" stroke-width="2"/><text x="24" y="28" text-anchor="middle" font-size="12" fill="var(--cyan)">EDU</text></svg>
-            <span>Educational Institutions</span>
-          </div>
-          <div class="industry-card glass-card">
-            <svg viewBox="0 0 48 48"><rect x="6" y="6" width="36" height="36" rx="5" fill="none" stroke="var(--cyan)" stroke-width="2"/><line x1="24" y1="6" x2="24" y2="42" stroke="var(--cyan)" stroke-width="2"/></svg>
-            <span>Battery Management</span>
-          </div>
-          <div class="industry-card glass-card">
-            <svg viewBox="0 0 48 48"><path d="M10 36L24 12l14 24" fill="none" stroke="var(--cyan)" stroke-width="2"/><circle cx="24" cy="32" r="4" fill="none" stroke="var(--cyan)" stroke-width="2"/></svg>
-            <span>Motor Drives</span>
-          </div>
-          <div class="industry-card glass-card">
-            <svg viewBox="0 0 48 48"><rect x="4" y="14" width="40" height="20" rx="3" fill="none" stroke="var(--cyan)" stroke-width="2"/><line x1="16" y1="14" x2="16" y2="34" stroke="var(--cyan)" stroke-width="2"/></svg>
-            <span>EV Electronics</span>
-          </div>
-        </div>
-      </div>
-    </section>
+        window.addEventListener('scroll', function () {
+            if (!scrollTicking) {
+                window.requestAnimationFrame(function () {
+                    updateActiveOnScroll();
+                    scrollTicking = false;
+                });
+                scrollTicking = true;
+            }
+        });
+    }
 
-    <!-- Projects Portfolio -->
-    <section id="projects" class="projects section">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">Featured <span class="gradient-text">Projects</span></h2>
-          <p class="section-subtitle">Selected engineering works showcasing our expertise</p>
-        </div>
-        <div class="projects-grid">
-          <div class="project-card glass-card">
-            <div class="project-image placeholder-pcb">
-              <div class="pcb-trace-animation"></div>
-              <div class="placeholder-label">High Current Synchronous Buck Converter PCB</div>
-            </div>
-            <div class="project-details">
-              <h3>High Current Synchronous Buck Converter</h3>
-              <p>75A, 12V-1.2V synchronous buck converter with digital control, optimized for server applications. 6-layer PCB, controlled impedance, and thermal vias.</p>
-              <div class="specs">
-                <span>Efficiency: 94%</span>
-                <span>Layers: 6</span>
-                <span>Current: 75A</span>
-              </div>
-              <div class="project-placeholder-images">
-                <div class="placeholder-img">3D PCB Top View</div>
-                <div class="placeholder-img">Assembly Side</div>
-              </div>
-            </div>
-          </div>
-          <div class="project-card glass-card">
-            <div class="project-image placeholder-pcb">
-              <div class="pcb-trace-animation"></div>
-              <div class="placeholder-label">High Current LDO Regulator</div>
-            </div>
-            <div class="project-details">
-              <h3>High Current Low Dropout Regulator</h3>
-              <p>20A ultra-low noise LDO for analog/RF circuitry. Advanced thermal management with heat sink integration and 4-layer board.</p>
-              <div class="specs">
-                <span>Dropout: 150mV</span>
-                <span>Noise: < 5µV</span>
-                <span>Current: 20A</span>
-              </div>
-              <div class="project-placeholder-images">
-                <div class="placeholder-img">Thermal Simulation</div>
-                <div class="placeholder-img">PCB Layout</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="future-projects">
-          <h3 class="future-title">Pipeline Projects</h3>
-          <div class="future-grid">
-            <div class="future-card glass-card">Motor Driver</div>
-            <div class="future-card glass-card">Battery Charger</div>
-            <div class="future-card glass-card">Inverter</div>
-            <div class="future-card glass-card">Embedded Controller</div>
-            <div class="future-card glass-card">Power Supply</div>
-            <div class="future-card glass-card">IoT Device</div>
-          </div>
-        </div>
-      </div>
-    </section>
+    function setActiveNavLink(activeId) {
+        allNavLinks.forEach(function (link) {
+            link.classList.remove('nav__link--active');
+            const href = link.getAttribute('href');
+            if (href === '#' + activeId) {
+                link.classList.add('nav__link--active');
+            }
+        });
+    }
 
-    <!-- Development Process Timeline -->
-    <section class="process section">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">Development <span class="gradient-text">Process</span></h2>
-        </div>
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content glass-card">Requirement Analysis</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content glass-card">Architecture Planning</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content glass-card">Component Selection</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content glass-card">Schematic Design</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content glass-card">PCB Layout</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content glass-card">Design Review</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content glass-card">Simulation</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content glass-card">DFM Review</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content glass-card">Prototype</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content glass-card">Testing & Optimization</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content glass-card">Production Support</div>
-          </div>
-        </div>
-      </div>
-    </section>
+    /* ────────────────────────────────────
+       5. FADE-IN ANIMATIONS ON SCROLL
+       Using Intersection Observer
+       ──────────────────────────────────── */
+    if (fadeElements.length > 0) {
+        // Add fade-in class to all target elements
+        fadeElements.forEach(function (el) {
+            el.classList.add('fade-in');
+        });
 
-    <!-- Why Choose Us -->
-    <section id="why-us" class="why-us section">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">Why <span class="gradient-text">Choose AEE Labs</span></h2>
-        </div>
-        <div class="why-grid">
-          <div class="why-card glass-card tilt-effect">
-            <svg viewBox="0 0 48 48"><polygon points="24,2 44,12 44,36 24,46 4,36 4,12" fill="none" stroke="var(--cyan)" stroke-width="2"/></svg>
-            <h3>Industry Standard Designs</h3>
-            <p>Adhering to IPC, IEEE, and international standards for reliable, production-ready boards.</p>
-          </div>
-          <div class="why-card glass-card tilt-effect">
-            <svg viewBox="0 0 48 48"><path d="M24 4L4 14v20l24 10 24-10V14z" fill="none" stroke="var(--cyan)" stroke-width="2"/></svg>
-            <h3>Reliable Engineering</h3>
-            <p>Rigorous simulation, validation, and DFM checks ensure your design works first time.</p>
-          </div>
-          <div class="why-card glass-card tilt-effect">
-            <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="22" fill="none" stroke="var(--cyan)" stroke-width="2"/><line x1="24" y1="2" x2="24" y2="10" stroke="var(--cyan)" stroke-width="2"/></svg>
-            <h3>Fast Delivery</h3>
-            <p>Streamlined workflows and rapid prototyping options to meet tight deadlines.</p>
-          </div>
-          <div class="why-card glass-card tilt-effect">
-            <svg viewBox="0 0 48 48"><rect x="6" y="6" width="36" height="36" rx="4" fill="none" stroke="var(--cyan)" stroke-width="2"/><text x="24" y="32" text-anchor="middle" font-size="18" fill="var(--cyan)">$</text></svg>
-            <h3>Affordable Pricing</h3>
-            <p>Competitive rates without compromising quality; scalable for startups and enterprises.</p>
-          </div>
-          <div class="why-card glass-card tilt-effect">
-            <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18" fill="none" stroke="var(--cyan)" stroke-width="2"/><path d="M24 6 L24 42 M6 24 L42 24" stroke="var(--cyan)" stroke-width="2"/></svg>
-            <h3>International Support</h3>
-            <p>Seamless collaboration across time zones with clear communication and regular updates.</p>
-          </div>
-          <div class="why-card glass-card tilt-effect">
-            <svg viewBox="0 0 48 48"><rect x="4" y="4" width="40" height="40" rx="5" fill="none" stroke="var(--cyan)" stroke-width="2"/><polyline points="14,24 22,32 34,16" stroke="var(--cyan)" stroke-width="3"/></svg>
-            <h3>Production Ready Designs</h3>
-            <p>Complete documentation including Gerbers, BOM, pick-and-place, and assembly drawings.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+        const fadeObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in--visible');
+                    // Unobserve after animation to save resources
+                    fadeObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            root: null,
+            rootMargin: '0px 0px -40px 0px',
+            threshold: 0.1
+        });
 
-    <!-- Technologies -->
-    <section class="technologies section">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">Core <span class="gradient-text">Technologies</span></h2>
-        </div>
-        <div class="tech-grid">
-          <div class="tech-card glass-card">
-            <svg viewBox="0 0 48 48"><rect x="6" y="6" width="36" height="36" rx="4" fill="none" stroke="var(--cyan)" stroke-width="2"/><circle cx="24" cy="24" r="8" fill="none" stroke="var(--cyan)" stroke-width="2"/></svg>
-            <span>Power Electronics</span>
-          </div>
-          <div class="tech-card glass-card">
-            <svg viewBox="0 0 48 48"><rect x="4" y="12" width="40" height="24" rx="3" fill="none" stroke="var(--cyan)" stroke-width="2"/><circle cx="24" cy="24" r="5" fill="none" stroke="var(--cyan)" stroke-width="2"/></svg>
-            <span>Embedded Systems</span>
-          </div>
-          <div class="tech-card glass-card">
-            <svg viewBox="0 0 48 48"><path d="M8 16h32v16H8z" fill="none" stroke="var(--cyan)" stroke-width="2"/><circle cx="16" cy="24" r="4" fill="var(--cyan)"/><circle cx="32" cy="24" r="4" fill="none" stroke="var(--cyan)" stroke-width="2"/></svg>
-            <span>PCB Design</span>
-          </div>
-          <div class="tech-card glass-card">
-            <svg viewBox="0 0 48 48"><rect x="10" y="10" width="28" height="28" rx="2" fill="none" stroke="var(--cyan)" stroke-width="2"/><text x="24" y="30" text-anchor="middle" font-size="12" fill="var(--cyan)">MCU</text></svg>
-            <span>Microcontrollers</span>
-          </div>
-          <div class="tech-card glass-card">
-            <svg viewBox="0 0 48 48"><polygon points="24,6 42,24 24,42 6,24" fill="none" stroke="var(--cyan)" stroke-width="2"/></svg>
-            <span>Power Supplies</span>
-          </div>
-          <div class="tech-card glass-card">
-            <svg viewBox="0 0 48 48"><path d="M4 12h40M4 24h40M4 36h40" stroke="var(--cyan)" stroke-width="2"/></svg>
-            <span>Analog Design</span>
-          </div>
-          <div class="tech-card glass-card">
-            <svg viewBox="0 0 48 48"><rect x="6" y="10" width="36" height="28" rx="2" fill="none" stroke="var(--cyan)" stroke-width="2"/><line x1="24" y1="10" x2="24" y2="38" stroke="var(--cyan)" stroke-width="2"/></svg>
-            <span>Digital Design</span>
-          </div>
-          <div class="tech-card glass-card">
-            <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18" fill="none" stroke="var(--cyan)" stroke-width="2"/><circle cx="24" cy="16" r="4" fill="var(--cyan)"/></svg>
-            <span>IoT</span>
-          </div>
-          <div class="tech-card glass-card">
-            <svg viewBox="0 0 48 48"><rect x="6" y="6" width="36" height="36" rx="5" fill="none" stroke="var(--cyan)" stroke-width="2"/><line x1="16" y1="16" x2="32" y2="32" stroke="var(--cyan)" stroke-width="2"/></svg>
-            <span>Automation</span>
-          </div>
-          <div class="tech-card glass-card">
-            <svg viewBox="0 0 48 48"><path d="M24 4L4 14v20l24 10 24-10V14z" fill="none" stroke="var(--cyan)" stroke-width="2"/><circle cx="24" cy="24" r="6" fill="none" stroke="var(--cyan)" stroke-width="2"/></svg>
-            <span>Signal Integrity</span>
-          </div>
-          <div class="tech-card glass-card">
-            <svg viewBox="0 0 48 48"><path d="M6 24h36M24 6v36" stroke="var(--cyan)" stroke-width="2"/><circle cx="24" cy="24" r="10" fill="none" stroke="var(--cyan)" stroke-width="2"/></svg>
-            <span>EMI/EMC</span>
-          </div>
-        </div>
-      </div>
-    </section>
+        fadeElements.forEach(function (el) {
+            fadeObserver.observe(el);
+        });
+    }
 
-    <!-- Testimonials -->
-    <section id="testimonials" class="testimonials section">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">Client <span class="gradient-text">Testimonials</span></h2>
-        </div>
-        <div class="testimonial-slider" id="testimonial-slider">
-          <div class="testimonial-track" id="testimonial-track">
-            <div class="testimonial glass-card">
-              <p>"AEE Labs delivered an exceptional power supply design that exceeded our performance targets. Their attention to EMI and thermal management was outstanding."</p>
-              <div class="client-info">
-                <div class="client-avatar">TS</div>
-                <div class="client-details">
-                  <strong>Dr. Thomas Schneider</strong>
-                  <span>CTO, PowerTech GmbH, Germany</span>
-                </div>
-              </div>
-            </div>
-            <div class="testimonial glass-card">
-              <p>"We needed a complex 8-layer embedded board on a tight schedule. AEE Labs provided professional layout and comprehensive DFM support. Highly recommended."</p>
-              <div class="client-info">
-                <div class="client-avatar">MK</div>
-                <div class="client-details">
-                  <strong>Michael K.</strong>
-                  <span>Senior Engineer, RoboCore Inc., USA</span>
-                </div>
-              </div>
-            </div>
-            <div class="testimonial glass-card">
-              <p>"Their expertise in KiCad and rapid prototyping saved us months of development. The reverse engineering service was thorough and accurate."</p>
-              <div class="client-info">
-                <div class="client-avatar">AR</div>
-                <div class="client-details">
-                  <strong>Ananya Reddy</strong>
-                  <span>Project Lead, MedTech Innovations, India</span>
-                </div>
-              </div>
-            </div>
-            <div class="testimonial glass-card">
-              <p>"Working with AEE Labs felt like having an in-house senior hardware team. The documentation and testing support were first-rate."</p>
-              <div class="client-info">
-                <div class="client-avatar">JL</div>
-                <div class="client-details">
-                  <strong>Jean-Luc Moreau</strong>
-                  <span>Founder, SmartEnergy Startup, France</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="slider-controls">
-            <button class="slider-btn prev" id="prev-btn">←</button>
-            <button class="slider-btn next" id="next-btn">→</button>
-          </div>
-          <div class="slider-dots" id="slider-dots"></div>
-        </div>
-        <div class="happy-counter">
-          <span>Join <strong><span id="happy-count">50</span>+</strong> happy clients worldwide</span>
-        </div>
-      </div>
-    </section>
+    /* ────────────────────────────────────
+       6. SMOOTH SCROLLING FOR ANCHOR LINKS
+       (Handled by CSS scroll-behavior: smooth;
+        but adding JS fallback for older browsers)
+       ──────────────────────────────────── */
+    // CSS handles smooth scrolling natively.
+    // This ensures any dynamically added links also work.
+    document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+        anchor.addEventListener('click', function (event) {
+            var targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            var targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                // Let CSS smooth-scroll handle it;
+                // no preventDefault needed since we use hash links
+            }
+        });
+    });
 
-    <!-- FAQ -->
-    <section id="faq" class="faq section">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">Frequently <span class="gradient-text">Asked Questions</span></h2>
-        </div>
-        <div class="faq-list">
-          <div class="faq-item glass-card">
-            <button class="faq-question">
-              <span>What is the typical design turnaround time?</span>
-              <svg class="faq-icon" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2"/></svg>
-            </button>
-            <div class="faq-answer"><p>Most medium-complexity PCB designs are completed within 1-3 weeks, depending on layer count and routing complexity. Rush services are available.</p></div>
-          </div>
-          <div class="faq-item glass-card">
-            <button class="faq-question">
-              <span>How is pricing structured?</span>
-              <svg class="faq-icon" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2"/></svg>
-            </button>
-            <div class="faq-answer"><p>We offer fixed-project pricing based on complexity, layers, and services required. A free initial consultation helps define scope and budget.</p></div>
-          </div>
-          <div class="faq-item glass-card">
-            <button class="faq-question">
-              <span>What is the maximum PCB layer count you handle?</span>
-              <svg class="faq-icon" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2"/></svg>
-            </button>
-            <div class="faq-answer"><p>We routinely design up to 8+ layers and have experience with 12-layer high-speed digital boards.</p></div>
-          </div>
-          <div class="faq-item glass-card">
-            <button class="faq-question">
-              <span>Do you assist with manufacturing?</span>
-              <svg class="faq-icon" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2"/></svg>
-            </button>
-            <div class="faq-answer"><p>Yes, we provide full manufacturing support: Gerber generation, BOM, pick-and-place files, assembly drawings, and vendor liaison.</p></div>
-          </div>
-          <div class="faq-item glass-card">
-            <button class="faq-question">
-              <span>Which design file formats do you deliver?</span>
-              <svg class="faq-icon" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2"/></svg>
-            </button>
-            <div class="faq-answer"><p>We provide native source files (KiCad, Altium, etc.), Gerbers (RS-274X), ODB++, PDF schematics, BOM, and 3D models as required.</p></div>
-          </div>
-          <div class="faq-item glass-card">
-            <button class="faq-question">
-              <span>Do you sign NDAs?</span>
-              <svg class="faq-icon" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2"/></svg>
-            </button>
-            <div class="faq-answer"><p>Absolutely. We treat all client intellectual property with strict confidentiality and are happy to sign NDA agreements before project kick-off.</p></div>
-          </div>
-          <div class="faq-item glass-card">
-            <button class="faq-question">
-              <span>Do you work with international clients?</span>
-              <svg class="faq-icon" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2"/></svg>
-            </button>
-            <div class="faq-answer"><p>Yes, we serve clients worldwide via remote collaboration, video calls, and clear digital documentation. Time zone differences are managed efficiently.</p></div>
-          </div>
-          <div class="faq-item glass-card">
-            <button class="faq-question">
-              <span>What support do you provide after design completion?</span>
-              <svg class="faq-icon" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2"/></svg>
-            </button>
-            <div class="faq-answer"><p>We offer post-design support including prototype debugging, design modifications, and production troubleshooting for a defined period.</p></div>
-          </div>
-        </div>
-      </div>
-    </section>
+    /* ────────────────────────────────────
+       7. CONTACT FORM VALIDATION
+       ──────────────────────────────────── */
+    if (contactForm) {
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const descriptionInput = document.getElementById('description');
+        const nameError = document.getElementById('nameError');
+        const emailError = document.getElementById('emailError');
+        const descriptionError = document.getElementById('descriptionError');
+        const formSuccess = document.getElementById('formSuccess');
 
-    <!-- Contact -->
-    <section id="contact" class="contact section">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">Get In <span class="gradient-text">Touch</span></h2>
-        </div>
-        <div class="contact-grid">
-          <div class="contact-info glass-card">
-            <h3>AEE Labs</h3>
-            <p>Telangana, India</p>
-            <p>Working Worldwide</p>
-            <div class="contact-detail">
-              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              <a href="tel:+917993769651">+91 7993769651</a>
-            </div>
-            <div class="contact-detail">
-              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-              <a href="mailto:buildwithnikhill@gmail.com">buildwithnikhill@gmail.com</a>
-            </div>
-            <div class="map-placeholder glass-card">
-              <span>📍 Telangana, India</span>
-              <div class="map-frame">Map Placeholder</div>
-            </div>
-          </div>
-          <form class="contact-form glass-card" id="contact-form">
-            <div class="form-row">
-              <input type="text" placeholder="Full Name *" required>
-              <input type="email" placeholder="Email Address *" required>
-            </div>
-            <div class="form-row">
-              <input type="text" placeholder="Company">
-              <input type="text" placeholder="Country">
-            </div>
-            <div class="form-row">
-              <input type="tel" placeholder="Phone Number">
-              <select required>
-                <option value="">Project Type *</option>
-                <option>PCB Design</option>
-                <option>Schematic Design</option>
-                <option>Hardware Architecture</option>
-                <option>Embedded Hardware</option>
-                <option>Power Electronics</option>
-                <option>Product Development</option>
-                <option>PCB Review</option>
-                <option>Reverse Engineering</option>
-                <option>Manufacturing Support</option>
-                <option>Consultation</option>
-                <option>Other</option>
-              </select>
-            </div>
-            <div class="form-row">
-              <select required>
-                <option value="">Budget Range *</option>
-                <option>Under $1,000</option>
-                <option>$1,000 - $5,000</option>
-                <option>$5,000 - $15,000</option>
-                <option>$15,000 - $50,000</option>
-                <option>$50,000+</option>
-              </select>
-            </div>
-            <textarea placeholder="Describe your project, requirements, and goals..." rows="5" required></textarea>
-            <div class="form-upload">
-              <label class="upload-btn" for="file-upload">📎 Upload Requirement (optional)</label>
-              <input type="file" id="file-upload" hidden>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit Inquiry</button>
-            <div class="form-success" id="form-success">Thank you! We'll respond within 24 hours.</div>
-          </form>
-        </div>
-      </div>
-    </section>
-  </main>
+        contactForm.addEventListener('submit', function (event) {
+            event.preventDefault();
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container footer-grid">
-      <div class="footer-brand">
-        <div class="footer-logo">
-          <svg viewBox="0 0 40 40" width="40" height="40">
-            <circle cx="20" cy="20" r="18" fill="none" stroke="var(--cyan)" stroke-width="2"/>
-            <text x="20" y="26" text-anchor="middle" fill="var(--cyan)" font-family="Orbitron" font-size="12" font-weight="900">AEE</text>
-          </svg>
-          <span>AEE Labs</span>
-        </div>
-        <p>Professional PCB Design & Hardware Development</p>
-        <div class="social-links">
-          <a href="#" aria-label="GitHub"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" fill="currentColor"/></svg></a>
-          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" fill="currentColor"/></svg></a>
-          <a href="mailto:buildwithnikhill@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.72 12 9.64l6.545-4.92 1.528-1.227C21.69 2.28 24 3.434 24 5.457z" fill="currentColor"/></svg></a>
-        </div>
-      </div>
-      <div class="footer-links">
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#industries">Industries</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer-newsletter">
-        <h4>Newsletter</h4>
-        <p>Receive engineering insights and updates.</p>
-        <form class="newsletter-form" id="newsletter-form">
-          <input type="email" placeholder="your@email.com" required>
-          <button type="submit" class="btn btn-small">Subscribe</button>
-        </form>
-      </div>
-    </div>
-    <div class="footer-bottom container">
-      <p>&copy; 2026 AEE Labs. All Rights Reserved. Designed with Engineering Excellence.</p>
-    </div>
-  </footer>
+            // Reset errors
+            resetFormErrors();
+            hideFormSuccess();
 
-  <!-- Back to Top -->
-  <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
+            let isValid = true;
 
-  <script src="script.js"></script>
-</body>
-</html>
+            // Validate Name
+            if (!nameInput.value.trim()) {
+                showError(nameInput, nameError, 'Please enter your full name.');
+                isValid = false;
+            } else if (nameInput.value.trim().length < 2) {
+                showError(nameInput, nameError, 'Name must be at least 2 characters.');
+                isValid = false;
+            }
+
+            // Validate Email
+            if (!emailInput.value.trim()) {
+                showError(emailInput, emailError, 'Please enter your email address.');
+                isValid = false;
+            } else if (!isValidEmail(emailInput.value.trim())) {
+                showError(emailInput, emailError, 'Please enter a valid email address.');
+                isValid = false;
+            }
+
+            // Validate Description
+            if (!descriptionInput.value.trim()) {
+                showError(descriptionInput, descriptionError, 'Please describe your project requirements.');
+                isValid = false;
+            } else if (descriptionInput.value.trim().length < 10) {
+                showError(descriptionInput, descriptionError, 'Please provide at least 10 characters.');
+                isValid = false;
+            }
+
+            if (isValid) {
+                // Simulate form submission success
+                showFormSuccess();
+                contactForm.reset();
+                // Scroll to success message
+                formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                // Hide success message after 8 seconds
+                setTimeout(function () {
+                    hideFormSuccess();
+                }, 8000);
+            }
+        });
+
+        // Real-time error clearing on input
+        [nameInput, emailInput, descriptionInput].forEach(function (input) {
+            if (!input) return;
+            input.addEventListener('input', function () {
+                var errorEl = document.getElementById(input.id + 'Error');
+                clearError(input, errorEl);
+            });
+        });
+    }
+
+    function showError(inputElement, errorElement, message) {
+        inputElement.parentElement.classList.add('form-group--error');
+        if (errorElement) {
+            errorElement.textContent = message;
+            errorElement.classList.add('form-error--visible');
+        }
+    }
+
+    function clearError(inputElement, errorElement) {
+        inputElement.parentElement.classList.remove('form-group--error');
+        if (errorElement) {
+            errorElement.textContent = '';
+            errorElement.classList.remove('form-error--visible');
+        }
+    }
+
+    function resetFormErrors() {
+        var errorElements = contactForm.querySelectorAll('.form-error--visible');
+        errorElements.forEach(function (el) {
+            el.textContent = '';
+            el.classList.remove('form-error--visible');
+        });
+        var errorGroups = contactForm.querySelectorAll('.form-group--error');
+        errorGroups.forEach(function (el) {
+            el.classList.remove('form-group--error');
+        });
+    }
+
+    function showFormSuccess() {
+        var successEl = document.getElementById('formSuccess');
+        if (successEl) {
+            successEl.style.display = 'block';
+        }
+    }
+
+    function hideFormSuccess() {
+        var successEl = document.getElementById('formSuccess');
+        if (successEl) {
+            successEl.style.display = 'none';
+        }
+    }
+
+    function isValidEmail(email) {
+        // RFC 5322 compliant email regex
+        var emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+        return emailRegex.test(email);
+    }
+
+    /* ────────────────────────────────────
+       8. INITIALIZATION
+       ──────────────────────────────────── */
+    // Set initial header state
+    handleHeaderScroll();
+    handleBackToTop();
+
+    // Set initial active nav link
+    if (allNavLinks.length > 0) {
+        var initialActive = allNavLinks[0];
+        if (initialActive) {
+            initialActive.classList.add('nav__link--active');
+        }
+    }
+
+    console.log('AEE Labs — Website initialized successfully.');
+});
