@@ -1,4 +1,3 @@
-
 /* =============================================
    AEE Labs — Professional Engineering Website
    Optimized JavaScript (script.js)
