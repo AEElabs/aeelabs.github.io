@@ -1,1252 +1,943 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-    <!--
-    ╔══════════════════════════════════════════════════════════════╗
-    ║  AEE Labs - Professional PCB Design & Power Electronics    ║
-    ║  Developed with HTML5, CSS3 & Vanilla JavaScript           ║
-    ║  GitHub Pages Compatible | SEO Optimized                   ║
-    ╚══════════════════════════════════════════════════════════════╝
-    -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="AEE Labs - Professional PCB Design, Power Electronics, Embedded Hardware Development. End-to-end product development from concept to manufacturing by Abboju Nikhil, M.Tech Power Electronics.">
-    <meta name="keywords" content="PCB Design, Power Electronics, Embedded Hardware, SMPS Design, High Speed PCB, Schematic Design, Altium, KiCad, DFM, Gerber Generation, BOM Optimization, STM32, ESP32, IoT, India, Telangana, Engineering Services">
-    <meta name="author" content="AEE Labs - Abboju Nikhil">
-    <meta name="robots" content="index, follow">
-    <meta name="theme-color" content="#0a0e17">
-    <meta property="og:title" content="AEE Labs - Professional PCB Design & Power Electronics">
-    <meta property="og:description" content="Transforming Ideas into Production-Ready Hardware. Professional PCB Design, Schematic Design, Power Electronics, Embedded Systems.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://aeelabs.github.io">
-    <meta property="og:image" content="https://aeelabs.github.io/images/og-image.jpg">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="AEE Labs - Professional PCB Design & Power Electronics">
-    <meta name="twitter:description" content="Transforming Ideas into Production-Ready Hardware. End-to-end electronic product development.">
-    <link rel="canonical" href="https://aeelabs.github.io">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%230a0e17'/><path d='M12 36 L22 20 L32 36 L42 20 L52 36' stroke='%2300d4ff' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/><circle cx='32' cy='34' r='3' fill='%23ff6b35'/></svg>">
-    <title>AEE Labs | Professional PCB Design & Power Electronics | Telangana, India</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AEE Labs | Professional PCB Design & Hardware Development | Power Electronics Engineering</title>
+  <meta name="description" content="AEE Labs provides world-class professional PCB design, schematic design, power electronics, embedded hardware and complete product development from concept to manufacturing. Serving startups, defence, automotive, medical, and industrial companies worldwide.">
+  <meta name="keywords" content="PCB design, hardware development, power electronics, professional PCB, schematic design, embedded hardware, product development, engineering consultancy, Abboju Nikhil, AEE Labs, DFM, signal integrity, Altium, KiCad, power supply design, IoT, automotive electronics, industrial electronics">
+  <meta name="author" content="AEE Labs">
+  <link rel="canonical" href="https://aeelabs.in/">
+  <meta name="robots" content="index, follow">
 
-    <!-- External Resources (Font Awesome for icons, Google Fonts) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Open Graph -->
+  <meta property="og:title" content="AEE Labs | Professional PCB Design & Hardware Engineering">
+  <meta property="og:description" content="Engineering the Future Through Intelligent Hardware Design. Premium PCB design, schematic, power electronics, and product development services.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://aeelabs.in/">
+  <meta property="og:image" content="https://aeelabs.in/assets/og-image.jpg">
+  <meta property="og:site_name" content="AEE Labs">
 
-    <!-- Main Stylesheet -->
-    <link rel="stylesheet" href="style.css">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AEE Labs | Professional PCB Design & Hardware Engineering">
+  <meta name="twitter:description" content="Engineering the Future Through Intelligent Hardware Design. Premium engineering services from concept to manufacturing.">
+  <meta name="twitter:image" content="https://aeelabs.in/assets/og-image.jpg">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "AEE Labs",
+    "url": "https://aeelabs.in",
+    "logo": "https://aeelabs.in/assets/logo.png",
+    "description": "Professional PCB Design, Hardware Development, and Power Electronics Engineering consultancy based in India, serving international clients.",
+    "founder": {
+      "@type": "Person",
+      "name": "Abboju Nikhil",
+      "jobTitle": "Professional Hardware Design Engineer",
+      "alumniOf": "M.Tech Power Electronics",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "AEE Labs"
+      }
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+91 7993769651",
+      "email": "buildwithnikhill@gmail.com",
+      "contactType": "customer service",
+      "areaServed": "Worldwide"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Telangana",
+      "addressCountry": "India"
+    }
+  }
+  </script>
+
+  <!-- Favicon (inline SVG gear icon) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><circle cx='32' cy='32' r='30' fill='%230a1128' stroke='%2300e5ff' stroke-width='3'/><circle cx='32' cy='32' r='20' fill='none' stroke='%2300e5ff' stroke-width='3' stroke-dasharray='10 5'/><circle cx='32' cy='32' r='8' fill='%2300e5ff'/></svg>">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!--
-    ╔══════════════════════════════════════════════════════════════╗
-    ║                    LOADING SCREEN                           ║
-    ╚══════════════════════════════════════════════════════════════╝
-    -->
-    <div id="loading-screen" class="loading-screen" aria-hidden="true">
-        <div class="loading-content">
-            <svg class="loading-logo" viewBox="0 0 120 120" width="80" height="80">
-                <rect x="10" y="10" width="100" height="100" rx="16" fill="none" stroke="var(--accent-cyan)" stroke-width="2.5" class="loading-rect"/>
-                <path d="M25 60 L45 32 L65 60 L85 32 L105 60" stroke="var(--accent-cyan)" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" class="loading-trace"/>
-                <circle cx="60" cy="56" r="5" fill="var(--accent-orange)" class="loading-dot"/>
-            </svg>
-            <div class="loading-bar-container">
-                <div class="loading-bar"></div>
-            </div>
-            <p class="loading-text">Initializing Engineering Systems...</p>
-        </div>
+  <!-- Loading Screen -->
+  <div id="loading-screen" class="loading-screen">
+    <div class="loader-logo">
+      <svg viewBox="0 0 100 100" width="120" height="120">
+        <circle cx="50" cy="50" r="45" fill="none" stroke="var(--cyan)" stroke-width="4" stroke-dasharray="283" stroke-dashoffset="283">
+          <animate attributeName="stroke-dashoffset" from="283" to="0" dur="2s" fill="freeze"/>
+        </circle>
+        <text x="50" y="58" text-anchor="middle" fill="var(--cyan)" font-family="Orbitron" font-size="20" font-weight="800">AEE</text>
+      </svg>
     </div>
+    <div class="loading-text">Initializing Engineering Systems...</div>
+    <div class="loading-bar">
+      <div class="loading-progress"></div>
+    </div>
+  </div>
 
-    <!--
-    ╔══════════════════════════════════════════════════════════════╗
-    ║                    CURSOR GLOW EFFECT                       ║
-    ╚══════════════════════════════════════════════════════════════╝
-    -->
-    <div id="cursor-glow" class="cursor-glow" aria-hidden="true"></div>
+  <!-- Custom Cursor -->
+  <div class="custom-cursor" id="custom-cursor"></div>
+  <div class="cursor-dot" id="cursor-dot"></div>
 
-    <!--
-    ╔══════════════════════════════════════════════════════════════╗
-    ║                 PARTICLE BACKGROUND CANVAS                  ║
-    ╚══════════════════════════════════════════════════════════════╝
-    -->
-    <canvas id="particle-canvas" class="particle-canvas" aria-hidden="true"></canvas>
+  <!-- Scroll Progress Bar -->
+  <div class="progress-bar" id="progress-bar"></div>
 
-    <!--
-    ╔══════════════════════════════════════════════════════════════╗
-    ║                    MAIN PAGE WRAPPER                        ║
-    ╚══════════════════════════════════════════════════════════════╝
-    -->
-    <main id="main-content" class="main-content">
+  <!-- Navigation -->
+  <header class="header" id="header">
+    <nav class="nav container">
+      <a href="#" class="nav-logo">
+        <svg class="logo-icon" viewBox="0 0 40 40" width="40" height="40">
+          <circle cx="20" cy="20" r="18" fill="none" stroke="var(--cyan)" stroke-width="2.5"/>
+          <polygon points="20,6 32,32 8,32" fill="none" stroke="var(--cyan)" stroke-width="2"/>
+          <text x="20" y="26" text-anchor="middle" fill="var(--cyan)" font-family="Orbitron" font-size="12" font-weight="900">AEE</text>
+        </svg>
+        <span class="logo-text">AEE <span class="logo-highlight">Labs</span></span>
+      </a>
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="#home" class="nav-link">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#services" class="nav-link">Services</a></li>
+        <li><a href="#capabilities" class="nav-link">Capabilities</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#industries" class="nav-link">Industries</a></li>
+        <li><a href="#why-us" class="nav-link">Why Us</a></li>
+        <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
+        <li><a href="#faq" class="nav-link">FAQ</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+        <li><a href="#contact" class="btn btn-nav">Get Quote</a></li>
+      </ul>
+      <div class="nav-toggle" id="nav-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+        <svg class="sun-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="2"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></g></svg>
+        <svg class="moon-icon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+      </button>
+    </nav>
+  </header>
 
-        <!--
-        ╔══════════════════════════════════════════════════════════╗
-        ║              HEADER / NAVIGATION BAR                    ║
-        ╚══════════════════════════════════════════════════════════╝
-        -->
-        <header id="header" class="header glass-nav" role="banner">
-            <div class="nav-container">
-                <a href="#hero" class="logo-link" aria-label="AEE Labs Home">
-                    <div class="logo">
-                        <svg class="logo-icon" viewBox="0 0 48 48" width="40" height="40">
-                            <rect x="4" y="4" width="40" height="40" rx="8" fill="none" stroke="var(--accent-cyan)" stroke-width="2"/>
-                            <path d="M10 28 L20 14 L30 28 L40 14" stroke="var(--accent-cyan)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                            <circle cx="25" cy="26" r="3" fill="var(--accent-orange)"/>
-                        </svg>
-                        <div class="logo-text">
-                            <span class="logo-name">AEE<span class="logo-highlight">Labs</span></span>
-                            <span class="logo-subtitle">Engineering Excellence</span>
-                        </div>
-                    </div>
-                </a>
-                <nav class="nav-links" role="navigation" aria-label="Main navigation">
-                    <a href="#about" class="nav-link">About</a>
-                    <a href="#services" class="nav-link">Services</a>
-                    <a href="#expertise" class="nav-link">Expertise</a>
-                    <a href="#projects" class="nav-link">Projects</a>
-                    <a href="#process" class="nav-link">Process</a>
-                    <a href="#testimonials" class="nav-link">Testimonials</a>
-                    <a href="#faq" class="nav-link">FAQ</a>
-                    <a href="#contact" class="nav-link nav-cta">Get Quote</a>
-                </nav>
-                <button id="dark-mode-toggle" class="dark-mode-toggle" aria-label="Toggle dark/light mode" title="Toggle Theme">
-                    <i class="fa-solid fa-moon"></i>
-                </button>
-                <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle mobile menu" aria-expanded="false">
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                </button>
-            </div>
-        </header>
-
-        <!-- Mobile Menu Overlay -->
-        <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
-            <nav class="mobile-nav-links">
-                <a href="#about" class="mobile-nav-link">About</a>
-                <a href="#services" class="mobile-nav-link">Services</a>
-                <a href="#expertise" class="mobile-nav-link">Expertise</a>
-                <a href="#projects" class="mobile-nav-link">Projects</a>
-                <a href="#process" class="mobile-nav-link">Process</a>
-                <a href="#testimonials" class="mobile-nav-link">Testimonials</a>
-                <a href="#faq" class="mobile-nav-link">FAQ</a>
-                <a href="#contact" class="mobile-nav-link mobile-nav-cta">Get Quote</a>
-            </nav>
+  <main>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <canvas id="hero-canvas" class="hero-canvas"></canvas>
+      <div class="hero-content container">
+        <div class="hero-badge">
+          <span class="pulse-dot"></span> Serving Worldwide
         </div>
+        <h1 class="hero-title">
+          <span class="typing-text" id="typing-text"></span>
+          <span class="cursor-blink">|</span>
+        </h1>
+        <p class="hero-subtitle">Professional PCB Design, Schematic Design, Power Electronics, Embedded Hardware and Complete Product Development from Concept to Manufacturing.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">Request Quote</a>
+          <a href="#projects" class="btn btn-outline">View Projects</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-number" data-target="80">0</span><span>+</span>
+            <span class="stat-label">Projects Completed</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number" data-target="50">0</span><span>+</span>
+            <span class="stat-label">Happy Clients</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number" data-target="15">0</span><span>+</span>
+            <span class="stat-label">Countries Served</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number" data-target="6">0</span><span>+</span>
+            <span class="stat-label">Years Experience</span>
+          </div>
+        </div>
+      </div>
+      <div class="floating-components" id="floating-components">
+        <!-- Floating IC chips and circuit elements added via JS -->
+      </div>
+    </section>
 
-        <!--
-        ╔══════════════════════════════════════════════════════════╗
-        ║              SECTION 1: HERO SECTION                    ║
-        ╚══════════════════════════════════════════════════════════╝
-        -->
-        <section id="hero" class="hero-section" aria-labelledby="hero-headline">
-            <!-- Animated PCB Background -->
-            <div class="pcb-bg" aria-hidden="true">
-                <svg class="pcb-traces" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
-                    <!-- PCB trace paths -->
-                    <path d="M0 200 L150 200 L200 150 L350 150 L400 100 L600 100 L650 150 L800 150" stroke="var(--accent-cyan)" stroke-width="1.5" fill="none" opacity="0.3" class="trace-1"/>
-                    <path d="M100 400 L250 400 L300 350 L500 350 L550 400 L700 400 L750 350 L900 350 L950 400 L1200 400" stroke="var(--accent-blue)" stroke-width="1" fill="none" opacity="0.25" class="trace-2"/>
-                    <path d="M0 600 L180 600 L220 550 L420 550 L470 600 L650 600 L700 550 L850 550 L900 600 L1200 600" stroke="var(--accent-cyan)" stroke-width="1.5" fill="none" opacity="0.3" class="trace-3"/>
-                    <path d="M50 100 L50 300 L150 300 L150 500 L300 500 L300 700" stroke="var(--accent-blue)" stroke-width="1" fill="none" opacity="0.2" class="trace-4"/>
-                    <path d="M500 50 L500 200 L600 200 L600 400 L750 400 L750 600 L900 600 L900 750" stroke="var(--accent-cyan)" stroke-width="1.5" fill="none" opacity="0.25" class="trace-5"/>
-                    <path d="M800 100 L800 250 L700 250 L700 450 L850 450 L850 650 L1000 650 L1000 800" stroke="var(--accent-blue)" stroke-width="1" fill="none" opacity="0.2" class="trace-6"/>
-                    <!-- PCB pads -->
-                    <circle cx="150" cy="200" r="6" fill="none" stroke="var(--accent-orange)" stroke-width="1.5" opacity="0.5" class="pad-1"/>
-                    <circle cx="400" cy="100" r="5" fill="none" stroke="var(--accent-orange)" stroke-width="1.5" opacity="0.5" class="pad-2"/>
-                    <circle cx="650" cy="150" r="6" fill="none" stroke="var(--accent-orange)" stroke-width="1.5" opacity="0.5" class="pad-3"/>
-                    <circle cx="900" cy="350" r="5" fill="none" stroke="var(--accent-orange)" stroke-width="1.5" opacity="0.5" class="pad-4"/>
-                    <circle cx="300" cy="500" r="6" fill="none" stroke="var(--accent-orange)" stroke-width="1.5" opacity="0.5" class="pad-5"/>
-                    <circle cx="750" cy="600" r="5" fill="none" stroke="var(--accent-orange)" stroke-width="1.5" opacity="0.5" class="pad-6"/>
-                    <!-- IC-like shapes -->
-                    <rect x="520" y="120" width="40" height="30" rx="3" fill="none" stroke="var(--accent-cyan)" stroke-width="1" opacity="0.35" class="ic-1"/>
-                    <rect x="320" y="380" width="50" height="35" rx="3" fill="none" stroke="var(--accent-cyan)" stroke-width="1" opacity="0.3" class="ic-2"/>
-                </svg>
+    <!-- About Section -->
+    <section id="about" class="about section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">About <span class="gradient-text">AEE Labs</span></h2>
+          <p class="section-subtitle">Engineering Excellence in Every Layer</p>
+        </div>
+        <div class="about-grid">
+          <div class="about-text glass-card">
+            <p>AEE Labs is a premier electronic hardware design consultancy founded by <strong>Abboju Nikhil</strong>, a Professional Hardware Design Engineer with an M.Tech in Power Electronics and ex-DRDO apprentice experience. We provide complete electronic hardware development services from concept to production.</p>
+            <p>Our commitment to <strong>professional engineering, high-quality PCB layouts, reliable schematics, and manufacturing support</strong> ensures your product transitions smoothly from an idea to a market-ready device. With international support and fast turnaround, we serve clients across the globe.</p>
+            <div class="about-highlights">
+              <div class="highlight-item">
+                <svg class="icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" fill="none" stroke="currentColor" stroke-width="2.5"/></svg>
+                <span>Engineering Excellence</span>
+              </div>
+              <div class="highlight-item">
+                <svg class="icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" fill="none" stroke="currentColor" stroke-width="2.5"/></svg>
+                <span>Fast Turnaround</span>
+              </div>
+              <div class="highlight-item">
+                <svg class="icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" fill="none" stroke="currentColor" stroke-width="2.5"/></svg>
+                <span>International Support</span>
+              </div>
+              <div class="highlight-item">
+                <svg class="icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" fill="none" stroke="currentColor" stroke-width="2.5"/></svg>
+                <span>Production-Ready Designs</span>
+              </div>
             </div>
-
-            <!-- 3D Gradient Orbs -->
-            <div class="gradient-orb orb-1" aria-hidden="true"></div>
-            <div class="gradient-orb orb-2" aria-hidden="true"></div>
-            <div class="gradient-orb orb-3" aria-hidden="true"></div>
-
-            <div class="hero-container">
-                <div class="hero-content">
-                    <div class="hero-badge glass-badge">
-                        <span class="badge-dot"></span> Worldwide Engineering Services
-                    </div>
-                    <h1 id="hero-headline" class="hero-headline">
-                        Transforming <span class="gradient-text">Ideas</span> into<br>
-                        <span class="typing-wrapper">Production-Ready <span id="typing-text" class="typing-text"></span><span class="typing-cursor">|</span></span>
-                    </h1>
-                    <p class="hero-subheading">
-                        Professional PCB Design, Schematic Design, Power Electronics,<br>
-                        Embedded Systems and End-to-End Product Development.
-                    </p>
-                    <div class="hero-buttons">
-                        <a href="#contact" class="btn btn-primary">
-                            <span class="btn-icon"><i class="fa-solid fa-paper-plane"></i></span>
-                            Request a Quote
-                            <span class="btn-shine"></span>
-                        </a>
-                        <a href="#projects" class="btn btn-secondary">
-                            <span class="btn-icon"><i class="fa-solid fa-eye"></i></span>
-                            View Portfolio
-                        </a>
-                    </div>
-                    <!-- Animated Statistics -->
-                    <div class="hero-stats">
-                        <div class="hero-stat">
-                            <span class="stat-number" data-target="150">0</span><span class="stat-plus">+</span>
-                            <span class="stat-label">Projects Completed</span>
-                        </div>
-                        <div class="hero-stat">
-                            <span class="stat-number" data-target="25">0</span><span class="stat-plus">+</span>
-                            <span class="stat-label">Countries Served</span>
-                        </div>
-                        <div class="hero-stat">
-                            <span class="stat-number" data-target="99">0</span><span class="stat-percent">%</span>
-                            <span class="stat-label">Customer Satisfaction</span>
-                        </div>
-                        <div class="hero-stat">
-                            <span class="stat-number" data-target="24">0</span><span class="stat-slash">/</span><span class="stat-number-sm">7</span>
-                            <span class="stat-label">Engineering Support</span>
-                        </div>
-                    </div>
-                </div>
+          </div>
+          <div class="about-founder glass-card tilt-effect" id="founder-card">
+            <div class="founder-image-placeholder">
+              <svg class="founder-silhouette" viewBox="0 0 100 100"><circle cx="50" cy="35" r="22" fill="none" stroke="var(--cyan)" stroke-width="3"/><path d="M20 85 Q50 55 80 85" fill="none" stroke="var(--cyan)" stroke-width="3"/></svg>
             </div>
-            <!-- Scroll indicator -->
-            <div class="scroll-indicator" aria-hidden="true">
-                <div class="scroll-mouse">
-                    <div class="scroll-wheel"></div>
-                </div>
-                <span class="scroll-text">Scroll to explore</span>
+            <h3>Abboju Nikhil</h3>
+            <p class="founder-title">Professional Hardware Design Engineer</p>
+            <div class="founder-credentials">
+              <span>M.Tech (Power Electronics)</span>
+              <span>Ex-DRDO Apprentice</span>
             </div>
-        </section>
-
-        <!--
-        ╔══════════════════════════════════════════════════════════╗
-        ║           SECTION 2: ABOUT AEE LABS                     ║
-        ╚══════════════════════════════════════════════════════════╝
-        -->
-        <section id="about" class="about-section section-padding" aria-labelledby="about-heading">
-            <div class="section-container">
-                <div class="section-header reveal">
-                    <span class="section-tag">About Us</span>
-                    <h2 id="about-heading" class="section-title">Engineering <span class="gradient-text">Excellence</span> in Every Layer</h2>
-                    <p class="section-subtitle">From concept to manufacturing, AEE Labs delivers complete electronic product development with precision and reliability.</p>
-                </div>
-                <div class="about-grid">
-                    <div class="about-content reveal">
-                        <p class="about-description">
-                            <strong>AEE Labs</strong> is a premier electronic product design consultancy specializing in <span class="highlight-text">power electronics</span>, <span class="highlight-text">PCB design</span>, and <span class="highlight-text">embedded hardware development</span>. Founded by Abboju Nikhil, we bring world-class engineering expertise to clients across the globe.
-                        </p>
-                        <p class="about-description">
-                            With deep expertise spanning schematic design, multi-layer PCB layout, signal integrity analysis, and DFM optimization, we transform complex requirements into production-ready hardware that meets international standards.
-                        </p>
-                        <ul class="about-expertise-list">
-                            <li><i class="fa-solid fa-bolt"></i> Power Electronics</li>
-                            <li><i class="fa-solid fa-microchip"></i> Embedded Systems</li>
-                            <li><i class="fa-solid fa-print"></i> PCB Design</li>
-                            <li><i class="fa-solid fa-check-double"></i> Hardware Validation</li>
-                            <li><i class="fa-solid fa-cubes"></i> Product Development</li>
-                            <li><i class="fa-solid fa-comments"></i> Engineering Consulting</li>
-                        </ul>
-                    </div>
-                    <!-- Founder Profile Card -->
-                    <div class="founder-card glass-card reveal" itemscope itemtype="https://schema.org/Person">
-                        <div class="founder-image-wrapper">
-                            <div class="founder-image-placeholder">
-                                <svg viewBox="0 0 200 200" width="200" height="200">
-                                    <circle cx="100" cy="75" r="45" fill="var(--accent-cyan)" opacity="0.3"/>
-                                    <circle cx="100" cy="75" r="35" fill="var(--accent-blue)" opacity="0.5"/>
-                                    <ellipse cx="100" cy="160" rx="60" ry="25" fill="var(--accent-cyan)" opacity="0.15"/>
-                                </svg>
-                                <div class="founder-initials">AN</div>
-                            </div>
-                        </div>
-                        <div class="founder-info">
-                            <h3 class="founder-name" itemprop="name">Abboju Nikhil</h3>
-                            <p class="founder-degree" itemprop="hasCredential">M.Tech (Power Electronics)</p>
-                            <p class="founder-title">Professional Hardware Design Engineer</p>
-                            <span class="founder-badge">Ex-DRDO Apprentice</span>
-                            <div class="founder-tags">
-                                <span>PCB Design Engineer</span>
-                                <span>Power Electronics Engineer</span>
-                            </div>
-                            <a href="https://linkedin.com" class="founder-linkedin" target="_blank" rel="noopener" aria-label="LinkedIn Profile">
-                                <i class="fa-brands fa-linkedin"></i> Connect on LinkedIn
-                            </a>
-                        </div>
-                    </div>
-                </div>
+            <div class="expertise-tags">
+              <span>Power Electronics</span>
+              <span>PCB Design</span>
+              <span>Hardware Design</span>
+              <span>Embedded Systems</span>
+              <span>Product Development</span>
+              <span>DFM/DFA</span>
+              <span>EMI/EMC</span>
+              <span>Signal Integrity</span>
+              <span>Power Supply Design</span>
+              <span>Thermal Management</span>
+              <span>Component Selection</span>
             </div>
-        </section>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <!--
-        ╔══════════════════════════════════════════════════════════╗
-        ║           SECTION 3: SERVICES SECTION                   ║
-        ╚══════════════════════════════════════════════════════════╝
-        -->
-        <section id="services" class="services-section section-padding" aria-labelledby="services-heading">
-            <div class="section-container">
-                <div class="section-header reveal">
-                    <span class="section-tag">Our Services</span>
-                    <h2 id="services-heading" class="section-title">Comprehensive <span class="gradient-text">Engineering</span> Services</h2>
-                    <p class="section-subtitle">From concept schematics to Gerber files, we provide complete PCB design and embedded hardware solutions.</p>
-                </div>
-                <!-- Service Category Tabs -->
-                <div class="service-tabs reveal" role="tablist">
-                    <button class="service-tab active" data-category="all" role="tab" aria-selected="true">All Services</button>
-                    <button class="service-tab" data-category="pcb" role="tab" aria-selected="false">PCB Design</button>
-                    <button class="service-tab" data-category="power" role="tab" aria-selected="false">Power Electronics</button>
-                    <button class="service-tab" data-category="embedded" role="tab" aria-selected="false">Embedded Hardware</button>
-                    <button class="service-tab" data-category="consulting" role="tab" aria-selected="false">Consulting</button>
-                </div>
-                <!-- Services Grid -->
-                <div class="services-grid" id="services-grid">
-                    <!-- PCB Design Services -->
-                    <div class="service-card glass-card reveal" data-category="pcb">
-                        <div class="service-icon"><i class="fa-solid fa-draw-polygon"></i></div>
-                        <h3>Professional Schematic Design</h3>
-                        <p>Comprehensive schematic capture with proper component selection, netlist generation, and design rule verification.</p>
-                    </div>
-                    <div class="service-card glass-card reveal" data-category="pcb">
-                        <div class="service-icon"><i class="fa-solid fa-layer-group"></i></div>
-                        <h3>2 Layer PCB Design</h3>
-                        <p>Cost-effective double-layer PCB layouts optimized for manufacturing with proper grounding and power distribution.</p>
-                    </div>
-                    <div class="service-card glass-card reveal" data-category="pcb">
-                        <div class="service-icon"><i class="fa-solid fa-layer-group"></i></div>
-                        <h3>4 Layer PCB Design</h3>
-                        <p>Multi-layer designs with dedicated power and ground planes for improved signal integrity and EMI performance.</p>
-                    </div>
-                    <div class="service-card glass-card reveal" data-category="pcb">
-                        <div class="service-icon"><i class="fa-solid fa-layer-group"></i></div>
-                        <h3>6 Layer PCB Design</h3>
-                        <p>High-density interconnect designs for complex applications requiring multiple signal routing layers.</p>
-                    </div>
-                    <div class="service-card glass-card reveal" data-category="pcb">
-                        <div class="service-icon"><i class="fa-solid fa-wave-square"></i></div>
-                        <h3>High Speed PCB Design</h3>
-                        <p>Controlled impedance routing, differential pairs, and length matching for high-speed digital interfaces.</p>
-                    </div>
-                    <div class="service-card glass-card reveal" data-category="pcb">
-                        <div class="service-icon"><i class="fa-solid fa-chart-line"></i></div>
-                        <h3>Signal Integrity Design</h3>
-                        <p>Analysis and mitigation of signal degradation issues including crosstalk, reflections, and jitter.</p>
-                    </div>
-                    <div class="service-card glass-card reveal" data-category="pcb">
-                        <div class="service-icon"><i class="fa-solid fa-bolt"></i></div>
-                        <h3>Power Integrity Analysis</h3>
-                        <p>PDN analysis ensuring stable power delivery with proper decoupling and low-impedance power distribution.</p>
-                    </div>
-                    <!-- Power Electronics Services -->
-                    <div class="service-card glass-card reveal" data-category="power">
-                        <div class="service-icon"><i class="fa-solid fa-plug-circle-bolt"></i></div>
-                        <h3>Power Electronics Design</h3>
-                        <p>Complete power converter design from specifications to validated prototypes with industry-best efficiency.</p>
-                    </div>
-                    <div class="service-card glass-card reveal" data-category="power">
-                        <div class="service-icon"><i class="fa-solid fa-bolt"></i></div>
-                        <h3>SMPS Design</h3>
-                        <p>Switched-mode power supply design with optimized magnetics, feedback compensation, and thermal management.</p>
-                    </div>
-                    <div class="service-card glass-card reveal" data-category="power">
-                        <div class="service-icon"><i class="fa-solid fa-arrow-down-wide-short"></i></div>
-                        <h3>Synchronous Buck Converter</h3>
-                        <p>High-efficiency step-down converters with synchronous rectification for minimal power loss and compact form factors.</p>
-                    </div>
-                    <div class="service-card glass-card reveal" data-category="power">
-                        <div class="service-icon"><i class="fa-solid fa-arrow-up-wide-short"></i></div>
-                        <h3>Boost Converter Design</h3>
-                        <p>Step-up DC-DC converters for battery-powered and industrial applications requiring higher output voltages.</p>
-                    </div>
-                    <div class="service-card glass-card reveal" data-category="power">
-                        <div class="service-icon"><i class="fa-solid fa-arrows-up-down"></i></div>
-                        <h3>Buck-Boost Converter</h3>
-                        <p>Versatile converters handling input voltages both above and below the output with seamless mode transitions.</p>
-                    </div>
-                    <div class="service-card glass-card reveal" data-category="power">
-                        <div class="service-icon"><i class="fa-solid fa-right-left"></i></div>
-                        <h3>Flyback Converter</h3>
-                        <p>Isolated power supply solutions for low to medium power applications with multiple output rails.</p>
-                    </div>
-                    <div class="service-card glass-card reveal" data-category="power">
-                        <div class="service-icon"><i class="fa-solid fa-arrow-right"></i></div>
-                        <h3>Forward Converter</h3>
-                        <p>Isolated DC-DC converters with excellent efficiency for medium to high power industrial applications.</p>
-                    </div>
-                    <div class="service-card glass-card reveal" data-category="power">
-                        <div class="service-icon"><i class="fa-solid fa-sine-wave"></i></div>
-                        <h3>LLC Resonant Converter</h3>
-                        <p>High-efficiency resonant topology designs achieving zero-voltage switching for minimal switching losses.</p>
-                    </div>
-                    <div class="service-card glass-card reveal" data-category="power">
-                        <div class="service-icon"><i class="fa-solid fa-gauge-high"></i></div>
-                        <h3>High Current LDO Design</h3>
-                        <p>Low-dropout linear regulators capable of delivering high current with ultra-low noise for sensitive analog circuits.</p>
-                    </div>
-                    <div class="service-card glass-card reveal" data-category="power">
-                        <div class="service-icon"><i class="fa-solid fa-battery-full"></i></div>
-                        <h3>Battery Charger Design</h3>
-                        <p>Advanced battery management with CC/CV charging profiles for Li-Ion, Li-Po, and lead-acid batteries.</p>
-                    </div>
-                    <div class="service-card glass-card reveal" data-category="power">
-                        <div class="service-icon"><i class="fa-solid fa-gears"></i></div>
-                        <h3>Motor Driver Design</h3>
-                        <p>Robust motor control solutions including H-bridge, three-phase inverter, and stepper motor drivers.</p>
-                    </div>
-                    <!-- Embedded Hardware Services -->
-                    <div class="service-card glass-card reveal" data-category="embedded">
-                        <div class="service-icon"><i class="fa-solid fa-microchip"></i></div>
-                        <h3>Embedded Hardware Design</h3>
-                        <p>Custom embedded system design with carefully selected MCUs, peripherals, and interface circuits.</p>
-                    </div>
-                    <div class="service-card glass-card reveal" data-category="embedded">
-                        <div class="service-icon"><i class="fa-brands fa-stripe-s"></i></div>
-                        <h3>STM32 Development</h3>
-                        <p>ARM Cortex-M based designs leveraging the STM32 ecosystem for industrial and IoT applications.</p>
-                    </div>
-                    <div class="service-card glass-card reveal" data-category="embedded">
-                        <div class="service-icon"><i class="fa-solid fa-wifi"></i></div>
-                        <h3>ESP32 Designs</h3>
-                        <p>Wi-Fi and Bluetooth enabled designs using Espressif's powerful ESP32 platform for connected devices.</p>
-                    </div>
-                    <div class="service-card glass-card reveal" data-category="embedded">
-                        <div class="service-icon"><i class="fa-solid fa-infinity"></i></div>
-                        <h3>Arduino Compatible</h3>
-                        <p>Custom Arduino-compatible hardware designs for rapid prototyping and educational applications.</p>
-                    </div>
-                    <div class="service-card glass-card reveal" data-category="embedded">
-                        <div class="service-icon"><i class="fa-brands fa-raspberry-pi"></i></div>
-                        <h3>Raspberry Pi Integration</h3>
-                        <p>Custom carrier boards and HAT designs for Raspberry Pi Compute Modules and single-board computers.</p>
-                    </div>
-                    <!-- Consulting Services -->
-                    <div class="service-card glass-card reveal" data-category="consulting">
-                        <div class="service-icon"><i class="fa-solid fa-file-shield"></i></div>
-                        <h3>PCB Review</h3>
-                        <p>Thorough design reviews identifying potential issues before fabrication, saving time and cost.</p>
-                    </div>
-                    <div class="service-card glass-card reveal" data-category="consulting">
-                        <div class="service-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
-                        <h3>Design Validation</h3>
-                        <p>Comprehensive validation ensuring designs meet specifications and regulatory requirements.</p>
-                    </div>
-                    <div class="service-card glass-card reveal" data-category="consulting">
-                        <div class="service-icon"><i class="fa-solid fa-backward"></i></div>
-                        <h3>Reverse Engineering</h3>
-                        <p>Professional reverse engineering services for legacy products, obsolescence management, and competitive analysis.</p>
-                    </div>
-                    <div class="service-card glass-card reveal" data-category="consulting">
-                        <div class="service-icon"><i class="fa-solid fa-comment-dots"></i></div>
-                        <h3>Engineering Consultation</h3>
-                        <p>Expert guidance on architecture decisions, component selection, and design strategy for your projects.</p>
-                    </div>
-                    <div class="service-card glass-card reveal" data-category="consulting">
-                        <div class="service-icon"><i class="fa-solid fa-file-invoice"></i></div>
-                        <h3>Gerber Generation</h3>
-                        <p>Manufacturing-ready Gerber files with comprehensive drill files, pick-and-place data, and assembly drawings.</p>
-                    </div>
-                    <div class="service-card glass-card reveal" data-category="consulting">
-                        <div class="service-icon"><i class="fa-solid fa-list-check"></i></div>
-                        <h3>BOM Optimization</h3>
-                        <p>Bill of Materials optimization for cost reduction, availability, and supply chain resilience.</p>
-                    </div>
-                    <div class="service-card glass-card reveal" data-category="consulting">
-                        <div class="service-icon"><i class="fa-solid fa-industry"></i></div>
-                        <h3>DFM / DFA</h3>
-                        <p>Design for Manufacturing and Assembly analysis ensuring smooth transition to production.</p>
-                    </div>
-                    <div class="service-card glass-card reveal" data-category="consulting">
-                        <div class="service-icon"><i class="fa-solid fa-building-columns"></i></div>
-                        <h3>Manufacturing Support</h3>
-                        <p>End-to-end manufacturing liaison including fab house selection and production oversight.</p>
-                    </div>
-                    <div class="service-card glass-card reveal" data-category="all">
-                        <div class="service-icon"><i class="fa-solid fa-rocket"></i></div>
-                        <h3>End-to-End Product Development</h3>
-                        <p>Complete turnkey solution from initial concept through design, prototyping, and manufacturing ramp-up.</p>
-                    </div>
-                    <div class="service-card glass-card reveal" data-category="all">
-                        <div class="service-icon"><i class="fa-solid fa-flask"></i></div>
-                        <h3>Prototype Support</h3>
-                        <p>Rapid prototyping services with quick-turn PCB fabrication and assembly for design validation.</p>
-                    </div>
-                </div>
+    <!-- Services -->
+    <section id="services" class="services section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Our <span class="gradient-text">Services</span></h2>
+          <p class="section-subtitle">Comprehensive hardware design solutions from concept to production</p>
+        </div>
+        <div class="services-grid">
+          <div class="service-card glass-card tilt-effect">
+            <div class="service-icon"><svg viewBox="0 0 48 48"><rect x="6" y="10" width="36" height="28" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M6 22h36" stroke="currentColor" stroke-width="2"/><circle cx="16" cy="36" r="4" fill="none" stroke="currentColor" stroke-width="2"/></svg></div>
+            <h3>Professional PCB Design</h3>
+            <p>High-density, multi-layer PCB layouts tailored for performance, manufacturability, and reliability.</p>
+            <a href="#contact" class="learn-more">Learn More <span>→</span></a>
+          </div>
+          <div class="service-card glass-card tilt-effect">
+            <div class="service-icon"><svg viewBox="0 0 48 48"><path d="M4 8h16l4-4h20v40H4z" fill="none" stroke="currentColor" stroke-width="2"/><line x1="14" y1="24" x2="34" y2="24" stroke="currentColor" stroke-width="2"/><circle cx="14" cy="24" r="2" fill="currentColor"/><line x1="14" y1="34" x2="28" y2="34" stroke="currentColor" stroke-width="2"/><circle cx="14" cy="34" r="2" fill="currentColor"/></svg></div>
+            <h3>Schematic Design</h3>
+            <p>Clean, well-organized, and thoroughly validated schematic capture for seamless design integration.</p>
+            <a href="#contact" class="learn-more">Learn More <span>→</span></a>
+          </div>
+          <div class="service-card glass-card tilt-effect">
+            <div class="service-icon"><svg viewBox="0 0 48 48"><rect x="6" y="6" width="36" height="36" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="24" r="8" fill="none" stroke="currentColor" stroke-width="2"/><line x1="24" y1="2" x2="24" y2="6" stroke="currentColor" stroke-width="2"/><line x1="24" y1="42" x2="24" y2="46" stroke="currentColor" stroke-width="2"/><line x1="2" y1="24" x2="6" y2="24" stroke="currentColor" stroke-width="2"/><line x1="42" y1="24" x2="46" y2="24" stroke="currentColor" stroke-width="2"/></svg></div>
+            <h3>Hardware Architecture</h3>
+            <p>System-level architecture planning ensuring optimal performance, cost, and scalability.</p>
+            <a href="#contact" class="learn-more">Learn More <span>→</span></a>
+          </div>
+          <div class="service-card glass-card tilt-effect">
+            <div class="service-icon"><svg viewBox="0 0 48 48"><rect x="8" y="12" width="32" height="24" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="24" r="6" fill="none" stroke="currentColor" stroke-width="2"/></svg></div>
+            <h3>Embedded Hardware</h3>
+            <p>Custom microcontroller and FPGA-based boards with peripheral integration and firmware considerations.</p>
+            <a href="#contact" class="learn-more">Learn More <span>→</span></a>
+          </div>
+          <div class="service-card glass-card tilt-effect">
+            <div class="service-icon"><svg viewBox="0 0 48 48"><path d="M12 36V12l24 12-24 12z" fill="none" stroke="currentColor" stroke-width="2"/><line x1="36" y1="6" x2="36" y2="42" stroke="currentColor" stroke-width="2"/></svg></div>
+            <h3>Power Electronics Design</h3>
+            <p>High-efficiency converters, inverters, motor drives, and battery management systems.</p>
+            <a href="#contact" class="learn-more">Learn More <span>→</span></a>
+          </div>
+          <div class="service-card glass-card tilt-effect">
+            <div class="service-icon"><svg viewBox="0 0 48 48"><path d="M24 2L6 12v24l18 10 18-10V12z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="24" r="6" fill="none" stroke="currentColor" stroke-width="2"/></svg></div>
+            <h3>Product Development</h3>
+            <p>End-to-end product realization: concept, prototyping, validation, and manufacturing support.</p>
+            <a href="#contact" class="learn-more">Learn More <span>→</span></a>
+          </div>
+          <div class="service-card glass-card tilt-effect">
+            <div class="service-icon"><svg viewBox="0 0 48 48"><polygon points="24,6 42,16 42,36 24,46 6,36 6,16" fill="none" stroke="currentColor" stroke-width="2"/><line x1="24" y1="26" x2="24" y2="36" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="18" r="3" fill="currentColor"/></svg></div>
+            <h3>Prototype Support</h3>
+            <p>Rapid prototyping, testing, and debugging to verify your design before mass production.</p>
+            <a href="#contact" class="learn-more">Learn More <span>→</span></a>
+          </div>
+          <div class="service-card glass-card tilt-effect">
+            <div class="service-icon"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18" fill="none" stroke="currentColor" stroke-width="2"/><path d="M24 6v6m0 24v6M6 24h6m24 0h6" stroke="currentColor" stroke-width="2"/></svg></div>
+            <h3>PCB Review & Optimization</h3>
+            <p>In-depth design reviews covering signal integrity, EMI/EMC, DFM, and thermal performance.</p>
+            <a href="#contact" class="learn-more">Learn More <span>→</span></a>
+          </div>
+          <div class="service-card glass-card tilt-effect">
+            <div class="service-icon"><svg viewBox="0 0 48 48"><path d="M14 2h20l10 14-20 30L4 16z" fill="none" stroke="currentColor" stroke-width="2"/><line x1="24" y1="14" x2="24" y2="30" stroke="currentColor" stroke-width="2"/></svg></div>
+            <h3>Reverse Engineering</h3>
+            <p>Recover and re-document legacy boards, create modern equivalents with improved performance.</p>
+            <a href="#contact" class="learn-more">Learn More <span>→</span></a>
+          </div>
+          <div class="service-card glass-card tilt-effect">
+            <div class="service-icon"><svg viewBox="0 0 48 48"><rect x="6" y="8" width="36" height="32" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><line x1="16" y1="8" x2="16" y2="40" stroke="currentColor" stroke-width="2"/><line x1="32" y1="8" x2="32" y2="40" stroke="currentColor" stroke-width="2"/></svg></div>
+            <h3>Manufacturing Support</h3>
+            <p>BOM generation, Gerber files, assembly drawings, and liaison with fabrication houses.</p>
+            <a href="#contact" class="learn-more">Learn More <span>→</span></a>
+          </div>
+          <div class="service-card glass-card tilt-effect">
+            <div class="service-icon"><svg viewBox="0 0 48 48"><rect x="4" y="4" width="40" height="40" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><text x="24" y="34" text-anchor="middle" font-size="20" font-weight="800" fill="currentColor">?</text></svg></div>
+            <h3>Engineering Consultation</h3>
+            <p>Expert guidance on technology selection, feasibility studies, and design strategy.</p>
+            <a href="#contact" class="learn-more">Learn More <span>→</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Capabilities Dashboard -->
+    <section id="capabilities" class="capabilities section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">PCB Design <span class="gradient-text">Capabilities</span></h2>
+          <p class="section-subtitle">From simple 2-layer boards to complex high-speed multi-layer designs</p>
+        </div>
+        <div class="capabilities-dashboard glass-card">
+          <div class="cap-grid">
+            <div class="cap-item" data-cap="2-layer"><span>2 Layer PCB</span><div class="cap-bar" style="width:100%"></div></div>
+            <div class="cap-item" data-cap="4-layer"><span>4 Layer PCB</span><div class="cap-bar" style="width:100%"></div></div>
+            <div class="cap-item" data-cap="6-layer"><span>6 Layer PCB</span><div class="cap-bar" style="width:95%"></div></div>
+            <div class="cap-item" data-cap="8-layer"><span>8+ Layer PCB</span><div class="cap-bar" style="width:90%"></div></div>
+            <div class="cap-item"><span>High-Speed PCB</span><div class="cap-bar" style="width:88%"></div></div>
+            <div class="cap-item"><span>Mixed Signal PCB</span><div class="cap-bar" style="width:92%"></div></div>
+            <div class="cap-item"><span>Analog PCB</span><div class="cap-bar" style="width:95%"></div></div>
+            <div class="cap-item"><span>Digital PCB</span><div class="cap-bar" style="width:90%"></div></div>
+            <div class="cap-item"><span>Power PCB</span><div class="cap-bar" style="width:98%"></div></div>
+            <div class="cap-item"><span>Motor Control PCB</span><div class="cap-bar" style="width:85%"></div></div>
+            <div class="cap-item"><span>Embedded PCB</span><div class="cap-bar" style="width:95%"></div></div>
+            <div class="cap-item"><span>Industrial PCB</span><div class="cap-bar" style="width:90%"></div></div>
+            <div class="cap-item"><span>Automotive PCB</span><div class="cap-bar" style="width:80%"></div></div>
+            <div class="cap-item"><span>Medical PCB</span><div class="cap-bar" style="width:75%"></div></div>
+            <div class="cap-item"><span>IoT PCB</span><div class="cap-bar" style="width:92%"></div></div>
+            <div class="cap-item"><span>RF Ready PCB</span><div class="cap-bar" style="width:70%"></div></div>
+            <div class="cap-item"><span>Flexible PCB Concepts</span><div class="cap-bar" style="width:65%"></div></div>
+            <div class="cap-item"><span>Rigid-Flex Concepts</span><div class="cap-bar" style="width:60%"></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Engineering Expertise -->
+    <section class="expertise section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Engineering <span class="gradient-text">Expertise</span></h2>
+          <p class="section-subtitle">Specialized knowledge for high-performance, reliable designs</p>
+        </div>
+        <div class="expertise-grid">
+          <div class="expertise-card glass-card">Controlled Impedance</div>
+          <div class="expertise-card glass-card">Length Matching</div>
+          <div class="expertise-card glass-card">Differential Pair Routing</div>
+          <div class="expertise-card glass-card">DDR Layout</div>
+          <div class="expertise-card glass-card">USB / CAN / Ethernet</div>
+          <div class="expertise-card glass-card">SPI / I2C / UART</div>
+          <div class="expertise-card glass-card">Power Integrity</div>
+          <div class="expertise-card glass-card">Signal Integrity</div>
+          <div class="expertise-card glass-card">Grounding Strategy</div>
+          <div class="expertise-card glass-card">Thermal Analysis</div>
+          <div class="expertise-card glass-card">Heat Sink Design</div>
+          <div class="expertise-card glass-card">Current Density Optimization</div>
+          <div class="expertise-card glass-card">EMI Reduction</div>
+          <div class="expertise-card glass-card">EMC Compliance Practices</div>
+          <div class="expertise-card glass-card">DFM / DFA</div>
+          <div class="expertise-card glass-card">IPC Design Guidelines</div>
+          <div class="expertise-card glass-card">Gerber Generation</div>
+          <div class="expertise-card glass-card">Assembly Drawings</div>
+          <div class="expertise-card glass-card">BOM Optimization</div>
+          <div class="expertise-card glass-card">Panelization Support</div>
+          <div class="expertise-card glass-card">Manufacturing Documentation</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Software Expertise -->
+    <section class="software section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Software <span class="gradient-text">Expertise</span></h2>
+        </div>
+        <div class="software-grid">
+          <div class="software-card glass-card tilt-effect">
+            <div class="software-icon kicad-icon"><span>K</span></div>
+            <h3>KiCad</h3>
+            <p>5+ years experience in open-source PCB design, complex hierarchical schematics, and advanced routing.</p>
+            <div class="software-tags"><span>Open Source</span><span>Advanced</span></div>
+          </div>
+          <div class="software-card glass-card tilt-effect">
+            <div class="software-icon altium-icon"><span>A</span></div>
+            <h3>Altium Designer</h3>
+            <p>Professional-grade design with 3D visualization, high-speed rules, and unified data management.</p>
+            <div class="software-tags"><span>Professional</span><span>3D PCB</span></div>
+          </div>
+          <div class="software-card glass-card tilt-effect">
+            <div class="software-icon cadence-icon"><span>C</span></div>
+            <h3>Cadence Allegro</h3>
+            <p>High-end constraint-driven design for complex, high-density boards with advanced simulation links.</p>
+            <div class="software-tags"><span>Enterprise</span><span>Constraint Manager</span></div>
+          </div>
+          <div class="software-card glass-card tilt-effect">
+            <div class="software-icon spice-icon"><span>L</span></div>
+            <h3>LTspice</h3>
+            <p>Analog and power circuit simulation, transient and AC analysis, component stress evaluation.</p>
+            <div class="software-tags"><span>Simulation</span><span>Analog</span></div>
+          </div>
+          <div class="software-card glass-card tilt-effect">
+            <div class="software-icon matlab-icon"><span>M</span></div>
+            <h3>MATLAB / Simulink</h3>
+            <p>System-level modeling, control loop design, digital filter implementation, and data analysis.</p>
+            <div class="software-tags"><span>Modeling</span><span>Control Systems</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Industries -->
+    <section id="industries" class="industries section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Industries <span class="gradient-text">Served</span></h2>
+          <p class="section-subtitle">Trusted by diverse sectors worldwide</p>
+        </div>
+        <div class="industries-grid">
+          <div class="industry-card glass-card">
+            <svg viewBox="0 0 48 48"><rect x="6" y="6" width="36" height="36" rx="4" fill="none" stroke="var(--cyan)" stroke-width="2"/><path d="M16 18h16M16 26h10" stroke="var(--cyan)" stroke-width="2"/></svg>
+            <span>Industrial Automation</span>
+          </div>
+          <div class="industry-card glass-card">
+            <svg viewBox="0 0 48 48"><path d="M12 36V12l24 12-24 12z" fill="none" stroke="var(--cyan)" stroke-width="2"/></svg>
+            <span>Power Electronics</span>
+          </div>
+          <div class="industry-card glass-card">
+            <svg viewBox="0 0 48 48"><rect x="6" y="10" width="36" height="28" rx="3" fill="none" stroke="var(--cyan)" stroke-width="2"/><circle cx="24" cy="24" r="8" fill="none" stroke="var(--cyan)" stroke-width="2"/></svg>
+            <span>Automotive Electronics</span>
+          </div>
+          <div class="industry-card glass-card">
+            <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18" fill="none" stroke="var(--cyan)" stroke-width="2"/><circle cx="24" cy="24" r="8" fill="none" stroke="var(--cyan)" stroke-width="2"/></svg>
+            <span>Consumer Electronics</span>
+          </div>
+          <div class="industry-card glass-card">
+            <svg viewBox="0 0 48 48"><path d="M24 2 L44 22 L34 42 L14 42 L4 22z" fill="none" stroke="var(--cyan)" stroke-width="2"/><circle cx="24" cy="24" r="5" fill="none" stroke="var(--cyan)" stroke-width="2"/></svg>
+            <span>Medical Electronics</span>
+          </div>
+          <div class="industry-card glass-card">
+            <svg viewBox="0 0 48 48"><path d="M24 4L4 14v20l20 10 20-10V14z" fill="none" stroke="var(--cyan)" stroke-width="2"/></svg>
+            <span>Renewable Energy</span>
+          </div>
+          <div class="industry-card glass-card">
+            <svg viewBox="0 0 48 48"><rect x="10" y="10" width="28" height="28" rx="5" fill="none" stroke="var(--cyan)" stroke-width="2"/><circle cx="24" cy="24" r="6" fill="none" stroke="var(--cyan)" stroke-width="2"/></svg>
+            <span>Robotics</span>
+          </div>
+          <div class="industry-card glass-card">
+            <svg viewBox="0 0 48 48"><path d="M8 36h4l10-20h4l10 20h4" fill="none" stroke="var(--cyan)" stroke-width="2"/><circle cx="24" cy="12" r="4" fill="none" stroke="var(--cyan)" stroke-width="2"/></svg>
+            <span>IoT & Embedded</span>
+          </div>
+          <div class="industry-card glass-card">
+            <svg viewBox="0 0 48 48"><polygon points="24,4 46,18 42,40 6,40 2,18" fill="none" stroke="var(--cyan)" stroke-width="2"/></svg>
+            <span>Defence Electronics</span>
+          </div>
+          <div class="industry-card glass-card">
+            <svg viewBox="0 0 48 48"><rect x="6" y="8" width="36" height="32" rx="3" fill="none" stroke="var(--cyan)" stroke-width="2"/><text x="24" y="30" text-anchor="middle" font-size="16" fill="var(--cyan)">R&D</text></svg>
+            <span>Research Organizations</span>
+          </div>
+          <div class="industry-card glass-card">
+            <svg viewBox="0 0 48 48"><path d="M24 2L6 12v24l18 10 18-10V12z" fill="none" stroke="var(--cyan)" stroke-width="2"/><text x="24" y="28" text-anchor="middle" font-size="12" fill="var(--cyan)">EDU</text></svg>
+            <span>Educational Institutions</span>
+          </div>
+          <div class="industry-card glass-card">
+            <svg viewBox="0 0 48 48"><rect x="6" y="6" width="36" height="36" rx="5" fill="none" stroke="var(--cyan)" stroke-width="2"/><line x1="24" y1="6" x2="24" y2="42" stroke="var(--cyan)" stroke-width="2"/></svg>
+            <span>Battery Management</span>
+          </div>
+          <div class="industry-card glass-card">
+            <svg viewBox="0 0 48 48"><path d="M10 36L24 12l14 24" fill="none" stroke="var(--cyan)" stroke-width="2"/><circle cx="24" cy="32" r="4" fill="none" stroke="var(--cyan)" stroke-width="2"/></svg>
+            <span>Motor Drives</span>
+          </div>
+          <div class="industry-card glass-card">
+            <svg viewBox="0 0 48 48"><rect x="4" y="14" width="40" height="20" rx="3" fill="none" stroke="var(--cyan)" stroke-width="2"/><line x1="16" y1="14" x2="16" y2="34" stroke="var(--cyan)" stroke-width="2"/></svg>
+            <span>EV Electronics</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Portfolio -->
+    <section id="projects" class="projects section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Featured <span class="gradient-text">Projects</span></h2>
+          <p class="section-subtitle">Selected engineering works showcasing our expertise</p>
+        </div>
+        <div class="projects-grid">
+          <div class="project-card glass-card">
+            <div class="project-image placeholder-pcb">
+              <div class="pcb-trace-animation"></div>
+              <div class="placeholder-label">High Current Synchronous Buck Converter PCB</div>
             </div>
-        </section>
-
-        <!--
-        ╔══════════════════════════════════════════════════════════╗
-        ║         SECTION 4: INDUSTRIES WE SERVE                  ║
-        ╚══════════════════════════════════════════════════════════╝
-        -->
-        <section id="industries" class="industries-section section-padding" aria-labelledby="industries-heading">
-            <div class="section-container">
-                <div class="section-header reveal">
-                    <span class="section-tag">Industries</span>
-                    <h2 id="industries-heading" class="section-title">Industries <span class="gradient-text">We Serve</span></h2>
-                    <p class="section-subtitle">Our expertise spans across diverse sectors delivering specialized engineering solutions.</p>
-                </div>
-                <div class="industries-grid">
-                    <div class="industry-card glass-card reveal">
-                        <div class="industry-icon"><i class="fa-solid fa-industry"></i></div>
-                        <h3>Industrial Automation</h3>
-                        <p>Robust designs for PLCs, sensors, motor controllers, and industrial communication interfaces.</p>
-                    </div>
-                    <div class="industry-card glass-card reveal">
-                        <div class="industry-icon"><i class="fa-solid fa-car"></i></div>
-                        <h3>Automotive</h3>
-                        <p>Automotive-grade designs meeting stringent reliability and temperature requirements for vehicle electronics.</p>
-                    </div>
-                    <div class="industry-card glass-card reveal">
-                        <div class="industry-icon"><i class="fa-solid fa-mobile-screen"></i></div>
-                        <h3>Consumer Electronics</h3>
-                        <p>Cost-optimized, high-volume designs for consumer products with rapid time-to-market.</p>
-                    </div>
-                    <div class="industry-card glass-card reveal">
-                        <div class="industry-icon"><i class="fa-solid fa-heart-pulse"></i></div>
-                        <h3>Medical Devices</h3>
-                        <p>IEC 60601-compliant designs with focus on safety, reliability, and low leakage currents.</p>
-                    </div>
-                    <div class="industry-card glass-card reveal">
-                        <div class="industry-icon"><i class="fa-solid fa-shield-halved"></i></div>
-                        <h3>Defense Electronics</h3>
-                        <p>Mil-spec designs with enhanced ruggedness, extended temperature range, and secure communication.</p>
-                    </div>
-                    <div class="industry-card glass-card reveal">
-                        <div class="industry-icon"><i class="fa-solid fa-wifi"></i></div>
-                        <h3>IoT</h3>
-                        <p>Low-power wireless designs with BLE, Wi-Fi, LoRa, and cellular connectivity for smart devices.</p>
-                    </div>
-                    <div class="industry-card glass-card reveal">
-                        <div class="industry-icon"><i class="fa-solid fa-solar-panel"></i></div>
-                        <h3>Renewable Energy</h3>
-                        <p>Power conversion solutions for solar inverters, MPPT controllers, and energy storage systems.</p>
-                    </div>
-                    <div class="industry-card glass-card reveal">
-                        <div class="industry-icon"><i class="fa-solid fa-charging-station"></i></div>
-                        <h3>Electric Vehicles</h3>
-                        <p>EV power electronics including onboard chargers, DC-DC converters, and BMS designs.</p>
-                    </div>
-                    <div class="industry-card glass-card reveal">
-                        <div class="industry-icon"><i class="fa-solid fa-robot"></i></div>
-                        <h3>Robotics</h3>
-                        <p>Precision motor control, sensor integration, and embedded control systems for robotic platforms.</p>
-                    </div>
-                </div>
+            <div class="project-details">
+              <h3>High Current Synchronous Buck Converter</h3>
+              <p>75A, 12V-1.2V synchronous buck converter with digital control, optimized for server applications. 6-layer PCB, controlled impedance, and thermal vias.</p>
+              <div class="specs">
+                <span>Efficiency: 94%</span>
+                <span>Layers: 6</span>
+                <span>Current: 75A</span>
+              </div>
+              <div class="project-placeholder-images">
+                <div class="placeholder-img">3D PCB Top View</div>
+                <div class="placeholder-img">Assembly Side</div>
+              </div>
             </div>
-        </section>
-
-        <!--
-        ╔══════════════════════════════════════════════════════════╗
-        ║           SECTION 5: EXPERTISE SECTION                  ║
-        ╚══════════════════════════════════════════════════════════╝
-        -->
-        <section id="expertise" class="expertise-section section-padding" aria-labelledby="expertise-heading">
-            <div class="section-container">
-                <div class="section-header reveal">
-                    <span class="section-tag">Expertise</span>
-                    <h2 id="expertise-heading" class="section-title">Technical <span class="gradient-text">Proficiency</span></h2>
-                    <p class="section-subtitle">Mastery across industry-standard tools and critical engineering disciplines.</p>
-                </div>
-                <div class="expertise-grid">
-                    <!-- Tool Proficiency Bars -->
-                    <div class="expertise-card glass-card reveal">
-                        <div class="expertise-header">
-                            <div class="expertise-icon"><img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='4' fill='%231a1a2e'/><text x='12' y='17' text-anchor='middle' font-size='14' font-weight='bold' fill='%2300d4ff'>K</text></svg>" alt="KiCad" width="40" height="40"></div>
-                            <div>
-                                <h4>KiCad</h4>
-                                <span class="expertise-level">Expert</span>
-                            </div>
-                        </div>
-                        <div class="progress-bar"><div class="progress-fill" style="--progress: 95%;"></div></div>
-                    </div>
-                    <div class="expertise-card glass-card reveal">
-                        <div class="expertise-header">
-                            <div class="expertise-icon"><i class="fa-solid fa-a" style="color:#00d4ff;font-size:28px;"></i></div>
-                            <div>
-                                <h4>Altium Designer</h4>
-                                <span class="expertise-level">Advanced</span>
-                            </div>
-                        </div>
-                        <div class="progress-bar"><div class="progress-fill" style="--progress: 90%;"></div></div>
-                    </div>
-                    <div class="expertise-card glass-card reveal">
-                        <div class="expertise-header">
-                            <div class="expertise-icon"><i class="fa-solid fa-e" style="color:#00d4ff;font-size:28px;"></i></div>
-                            <div>
-                                <h4>EasyEDA</h4>
-                                <span class="expertise-level">Expert</span>
-                            </div>
-                        </div>
-                        <div class="progress-bar"><div class="progress-fill" style="--progress: 92%;"></div></div>
-                    </div>
-                    <div class="expertise-card glass-card reveal">
-                        <div class="expertise-header">
-                            <div class="expertise-icon"><i class="fa-solid fa-wave-square" style="color:#00d4ff;"></i></div>
-                            <div>
-                                <h4>LTspice</h4>
-                                <span class="expertise-level">Expert</span>
-                            </div>
-                        </div>
-                        <div class="progress-bar"><div class="progress-fill" style="--progress: 96%;"></div></div>
-                    </div>
-                    <div class="expertise-card glass-card reveal">
-                        <div class="expertise-header">
-                            <div class="expertise-icon"><i class="fa-solid fa-m" style="color:#00d4ff;font-size:28px;"></i></div>
-                            <div>
-                                <h4>MATLAB</h4>
-                                <span class="expertise-level">Advanced</span>
-                            </div>
-                        </div>
-                        <div class="progress-bar"><div class="progress-fill" style="--progress: 85%;"></div></div>
-                    </div>
-                    <!-- Skill Tags -->
-                    <div class="expertise-card glass-card reveal">
-                        <div class="expertise-header">
-                            <div class="expertise-icon"><i class="fa-solid fa-bolt"></i></div>
-                            <div><h4>Power Electronics</h4></div>
-                        </div>
-                        <div class="progress-bar"><div class="progress-fill" style="--progress: 98%;"></div></div>
-                    </div>
-                    <div class="expertise-card glass-card reveal">
-                        <div class="expertise-header">
-                            <div class="expertise-icon"><i class="fa-solid fa-chart-line"></i></div>
-                            <div><h4>Circuit Simulation</h4></div>
-                        </div>
-                        <div class="progress-bar"><div class="progress-fill" style="--progress: 93%;"></div></div>
-                    </div>
-                    <div class="expertise-card glass-card reveal">
-                        <div class="expertise-header">
-                            <div class="expertise-icon"><i class="fa-solid fa-print"></i></div>
-                            <div><h4>PCB Layout</h4></div>
-                        </div>
-                        <div class="progress-bar"><div class="progress-fill" style="--progress: 97%;"></div></div>
-                    </div>
-                    <div class="expertise-card glass-card reveal">
-                        <div class="expertise-header">
-                            <div class="expertise-icon"><i class="fa-solid fa-shield"></i></div>
-                            <div><h4>EMI/EMC Considerations</h4></div>
-                        </div>
-                        <div class="progress-bar"><div class="progress-fill" style="--progress: 91%;"></div></div>
-                    </div>
-                    <div class="expertise-card glass-card reveal">
-                        <div class="expertise-header">
-                            <div class="expertise-icon"><i class="fa-solid fa-check-double"></i></div>
-                            <div><h4>DFM</h4></div>
-                        </div>
-                        <div class="progress-bar"><div class="progress-fill" style="--progress: 94%;"></div></div>
-                    </div>
-                </div>
+          </div>
+          <div class="project-card glass-card">
+            <div class="project-image placeholder-pcb">
+              <div class="pcb-trace-animation"></div>
+              <div class="placeholder-label">High Current LDO Regulator</div>
             </div>
-        </section>
-
-        <!--
-        ╔══════════════════════════════════════════════════════════╗
-        ║         SECTION 6: FEATURED PROJECTS                    ║
-        ╚══════════════════════════════════════════════════════════╝
-        -->
-        <section id="projects" class="projects-section section-padding" aria-labelledby="projects-heading">
-            <div class="section-container">
-                <div class="section-header reveal">
-                    <span class="section-tag">Portfolio</span>
-                    <h2 id="projects-heading" class="section-title">Featured <span class="gradient-text">Projects</span></h2>
-                    <p class="section-subtitle">Showcasing our engineering capabilities through real-world hardware designs.</p>
-                </div>
-                <div class="projects-grid">
-                    <!-- Project 1 -->
-                    <div class="project-card glass-card reveal">
-                        <div class="project-image-wrapper">
-                            <div class="project-image-placeholder pcb-placeholder-1">
-                                <svg viewBox="0 0 400 250" width="400" height="250">
-                                    <rect width="400" height="250" rx="8" fill="#0d1117"/>
-                                    <path d="M20 40 L120 40 L150 70 L250 70 L280 40 L380 40" stroke="#00d4ff" stroke-width="1.5" fill="none" opacity="0.6"/>
-                                    <path d="M20 80 L80 80 L110 110 L200 110 L230 80 L380 80" stroke="#00d4ff" stroke-width="1" fill="none" opacity="0.4"/>
-                                    <path d="M20 120 L140 120 L170 150 L300 150 L330 120 L380 120" stroke="#ff6b35" stroke-width="1.5" fill="none" opacity="0.5"/>
-                                    <path d="M20 160 L100 160 L130 190 L250 190 L280 160 L380 160" stroke="#00d4ff" stroke-width="1" fill="none" opacity="0.4"/>
-                                    <rect x="140" y="30" width="55" height="35" rx="4" fill="none" stroke="#00d4ff" stroke-width="1.5" opacity="0.5"/>
-                                    <rect x="250" y="30" width="40" height="25" rx="3" fill="none" stroke="#ff6b35" stroke-width="1" opacity="0.4"/>
-                                    <circle cx="340" cy="50" r="12" fill="none" stroke="#00d4ff" stroke-width="1.5" opacity="0.5"/>
-                                    <circle cx="60" cy="170" r="10" fill="none" stroke="#ff6b35" stroke-width="1.5" opacity="0.4"/>
-                                    <text x="200" y="225" text-anchor="middle" fill="#00d4ff" font-size="11" font-family="monospace" opacity="0.7">LDO_REGULATOR_V2.1</text>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <h3>High Current Wide Input LDO Regulator</h3>
-                            <div class="project-specs">
-                                <span class="spec-tag">Input: 3.3V - 20V</span>
-                                <span class="spec-tag">Output: 1.8V / 5A</span>
-                                <span class="spec-tag">Noise: &lt;10µV RMS</span>
-                            </div>
-                            <p class="project-description">Ultra-low noise linear regulator designed for sensitive analog front-ends and precision measurement systems. Features foldback current limiting and thermal shutdown.</p>
-                            <div class="project-applications">
-                                <span>Precision Instrumentation</span>
-                                <span>Medical Devices</span>
-                                <span>Audio Equipment</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Project 2 -->
-                    <div class="project-card glass-card reveal">
-                        <div class="project-image-wrapper">
-                            <div class="project-image-placeholder pcb-placeholder-2">
-                                <svg viewBox="0 0 400 250" width="400" height="250">
-                                    <rect width="400" height="250" rx="8" fill="#0d1117"/>
-                                    <path d="M30 30 L180 30 L200 50 L350 50 L370 30" stroke="#ff6b35" stroke-width="1.5" fill="none" opacity="0.6"/>
-                                    <path d="M30 70 L150 70 L170 90 L320 90 L340 70 L370 70" stroke="#00d4ff" stroke-width="1" fill="none" opacity="0.4"/>
-                                    <rect x="160" y="20" width="70" height="50" rx="5" fill="none" stroke="#ff6b35" stroke-width="2" opacity="0.6"/>
-                                    <circle cx="195" cy="45" r="15" fill="none" stroke="#00d4ff" stroke-width="1.5" opacity="0.5"/>
-                                    <path d="M30 140 L200 140 L220 160 L370 160" stroke="#00d4ff" stroke-width="1" fill="none" opacity="0.4"/>
-                                    <path d="M30 180 L160 180 L180 200 L340 200 L360 180 L370 180" stroke="#ff6b35" stroke-width="1.5" fill="none" opacity="0.5"/>
-                                    <rect x="100" y="130" width="50" height="30" rx="3" fill="none" stroke="#00d4ff" stroke-width="1" opacity="0.4"/>
-                                    <text x="200" y="230" text-anchor="middle" fill="#ff6b35" font-size="11" font-family="monospace" opacity="0.7">SYNC_BUCK_V3.0</text>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <h3>Synchronous Buck Converter</h3>
-                            <div class="project-specs">
-                                <span class="spec-tag">Efficiency: 96%</span>
-                                <span class="spec-tag">Output: 5V / 15A</span>
-                                <span class="spec-tag">Switching: 500kHz</span>
-                            </div>
-                            <p class="project-description">High-current synchronous buck converter achieving 96% peak efficiency. Features integrated MOSFETs, programmable soft-start, and precision enable for power sequencing.</p>
-                            <div class="project-applications">
-                                <span>FPGA Power Supplies</span>
-                                <span>Industrial Systems</span>
-                                <span>Telecom Equipment</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="project-details">
+              <h3>High Current Low Dropout Regulator</h3>
+              <p>20A ultra-low noise LDO for analog/RF circuitry. Advanced thermal management with heat sink integration and 4-layer board.</p>
+              <div class="specs">
+                <span>Dropout: 150mV</span>
+                <span>Noise: < 5µV</span>
+                <span>Current: 20A</span>
+              </div>
+              <div class="project-placeholder-images">
+                <div class="placeholder-img">Thermal Simulation</div>
+                <div class="placeholder-img">PCB Layout</div>
+              </div>
             </div>
-        </section>
+          </div>
+        </div>
+        <div class="future-projects">
+          <h3 class="future-title">Pipeline Projects</h3>
+          <div class="future-grid">
+            <div class="future-card glass-card">Motor Driver</div>
+            <div class="future-card glass-card">Battery Charger</div>
+            <div class="future-card glass-card">Inverter</div>
+            <div class="future-card glass-card">Embedded Controller</div>
+            <div class="future-card glass-card">Power Supply</div>
+            <div class="future-card glass-card">IoT Device</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <!--
-        ╔══════════════════════════════════════════════════════════╗
-        ║        SECTION 7: WHY CHOOSE AEE LABS                   ║
-        ╚══════════════════════════════════════════════════════════╝
-        -->
-        <section id="why-choose" class="why-choose-section section-padding" aria-labelledby="why-choose-heading">
-            <div class="section-container">
-                <div class="section-header reveal">
-                    <span class="section-tag">Why Choose Us</span>
-                    <h2 id="why-choose-heading" class="section-title">Why Leading Companies <span class="gradient-text">Trust AEE Labs</span></h2>
+    <!-- Development Process Timeline -->
+    <section class="process section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Development <span class="gradient-text">Process</span></h2>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content glass-card">Requirement Analysis</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content glass-card">Architecture Planning</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content glass-card">Component Selection</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content glass-card">Schematic Design</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content glass-card">PCB Layout</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content glass-card">Design Review</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content glass-card">Simulation</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content glass-card">DFM Review</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content glass-card">Prototype</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content glass-card">Testing & Optimization</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content glass-card">Production Support</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section id="why-us" class="why-us section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Why <span class="gradient-text">Choose AEE Labs</span></h2>
+        </div>
+        <div class="why-grid">
+          <div class="why-card glass-card tilt-effect">
+            <svg viewBox="0 0 48 48"><polygon points="24,2 44,12 44,36 24,46 4,36 4,12" fill="none" stroke="var(--cyan)" stroke-width="2"/></svg>
+            <h3>Industry Standard Designs</h3>
+            <p>Adhering to IPC, IEEE, and international standards for reliable, production-ready boards.</p>
+          </div>
+          <div class="why-card glass-card tilt-effect">
+            <svg viewBox="0 0 48 48"><path d="M24 4L4 14v20l24 10 24-10V14z" fill="none" stroke="var(--cyan)" stroke-width="2"/></svg>
+            <h3>Reliable Engineering</h3>
+            <p>Rigorous simulation, validation, and DFM checks ensure your design works first time.</p>
+          </div>
+          <div class="why-card glass-card tilt-effect">
+            <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="22" fill="none" stroke="var(--cyan)" stroke-width="2"/><line x1="24" y1="2" x2="24" y2="10" stroke="var(--cyan)" stroke-width="2"/></svg>
+            <h3>Fast Delivery</h3>
+            <p>Streamlined workflows and rapid prototyping options to meet tight deadlines.</p>
+          </div>
+          <div class="why-card glass-card tilt-effect">
+            <svg viewBox="0 0 48 48"><rect x="6" y="6" width="36" height="36" rx="4" fill="none" stroke="var(--cyan)" stroke-width="2"/><text x="24" y="32" text-anchor="middle" font-size="18" fill="var(--cyan)">$</text></svg>
+            <h3>Affordable Pricing</h3>
+            <p>Competitive rates without compromising quality; scalable for startups and enterprises.</p>
+          </div>
+          <div class="why-card glass-card tilt-effect">
+            <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18" fill="none" stroke="var(--cyan)" stroke-width="2"/><path d="M24 6 L24 42 M6 24 L42 24" stroke="var(--cyan)" stroke-width="2"/></svg>
+            <h3>International Support</h3>
+            <p>Seamless collaboration across time zones with clear communication and regular updates.</p>
+          </div>
+          <div class="why-card glass-card tilt-effect">
+            <svg viewBox="0 0 48 48"><rect x="4" y="4" width="40" height="40" rx="5" fill="none" stroke="var(--cyan)" stroke-width="2"/><polyline points="14,24 22,32 34,16" stroke="var(--cyan)" stroke-width="3"/></svg>
+            <h3>Production Ready Designs</h3>
+            <p>Complete documentation including Gerbers, BOM, pick-and-place, and assembly drawings.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technologies -->
+    <section class="technologies section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Core <span class="gradient-text">Technologies</span></h2>
+        </div>
+        <div class="tech-grid">
+          <div class="tech-card glass-card">
+            <svg viewBox="0 0 48 48"><rect x="6" y="6" width="36" height="36" rx="4" fill="none" stroke="var(--cyan)" stroke-width="2"/><circle cx="24" cy="24" r="8" fill="none" stroke="var(--cyan)" stroke-width="2"/></svg>
+            <span>Power Electronics</span>
+          </div>
+          <div class="tech-card glass-card">
+            <svg viewBox="0 0 48 48"><rect x="4" y="12" width="40" height="24" rx="3" fill="none" stroke="var(--cyan)" stroke-width="2"/><circle cx="24" cy="24" r="5" fill="none" stroke="var(--cyan)" stroke-width="2"/></svg>
+            <span>Embedded Systems</span>
+          </div>
+          <div class="tech-card glass-card">
+            <svg viewBox="0 0 48 48"><path d="M8 16h32v16H8z" fill="none" stroke="var(--cyan)" stroke-width="2"/><circle cx="16" cy="24" r="4" fill="var(--cyan)"/><circle cx="32" cy="24" r="4" fill="none" stroke="var(--cyan)" stroke-width="2"/></svg>
+            <span>PCB Design</span>
+          </div>
+          <div class="tech-card glass-card">
+            <svg viewBox="0 0 48 48"><rect x="10" y="10" width="28" height="28" rx="2" fill="none" stroke="var(--cyan)" stroke-width="2"/><text x="24" y="30" text-anchor="middle" font-size="12" fill="var(--cyan)">MCU</text></svg>
+            <span>Microcontrollers</span>
+          </div>
+          <div class="tech-card glass-card">
+            <svg viewBox="0 0 48 48"><polygon points="24,6 42,24 24,42 6,24" fill="none" stroke="var(--cyan)" stroke-width="2"/></svg>
+            <span>Power Supplies</span>
+          </div>
+          <div class="tech-card glass-card">
+            <svg viewBox="0 0 48 48"><path d="M4 12h40M4 24h40M4 36h40" stroke="var(--cyan)" stroke-width="2"/></svg>
+            <span>Analog Design</span>
+          </div>
+          <div class="tech-card glass-card">
+            <svg viewBox="0 0 48 48"><rect x="6" y="10" width="36" height="28" rx="2" fill="none" stroke="var(--cyan)" stroke-width="2"/><line x1="24" y1="10" x2="24" y2="38" stroke="var(--cyan)" stroke-width="2"/></svg>
+            <span>Digital Design</span>
+          </div>
+          <div class="tech-card glass-card">
+            <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18" fill="none" stroke="var(--cyan)" stroke-width="2"/><circle cx="24" cy="16" r="4" fill="var(--cyan)"/></svg>
+            <span>IoT</span>
+          </div>
+          <div class="tech-card glass-card">
+            <svg viewBox="0 0 48 48"><rect x="6" y="6" width="36" height="36" rx="5" fill="none" stroke="var(--cyan)" stroke-width="2"/><line x1="16" y1="16" x2="32" y2="32" stroke="var(--cyan)" stroke-width="2"/></svg>
+            <span>Automation</span>
+          </div>
+          <div class="tech-card glass-card">
+            <svg viewBox="0 0 48 48"><path d="M24 4L4 14v20l24 10 24-10V14z" fill="none" stroke="var(--cyan)" stroke-width="2"/><circle cx="24" cy="24" r="6" fill="none" stroke="var(--cyan)" stroke-width="2"/></svg>
+            <span>Signal Integrity</span>
+          </div>
+          <div class="tech-card glass-card">
+            <svg viewBox="0 0 48 48"><path d="M6 24h36M24 6v36" stroke="var(--cyan)" stroke-width="2"/><circle cx="24" cy="24" r="10" fill="none" stroke="var(--cyan)" stroke-width="2"/></svg>
+            <span>EMI/EMC</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="testimonials section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Client <span class="gradient-text">Testimonials</span></h2>
+        </div>
+        <div class="testimonial-slider" id="testimonial-slider">
+          <div class="testimonial-track" id="testimonial-track">
+            <div class="testimonial glass-card">
+              <p>"AEE Labs delivered an exceptional power supply design that exceeded our performance targets. Their attention to EMI and thermal management was outstanding."</p>
+              <div class="client-info">
+                <div class="client-avatar">TS</div>
+                <div class="client-details">
+                  <strong>Dr. Thomas Schneider</strong>
+                  <span>CTO, PowerTech GmbH, Germany</span>
                 </div>
-                <div class="why-grid">
-                    <div class="why-card glass-card reveal">
-                        <div class="why-icon"><i class="fa-solid fa-earth-americas"></i></div>
-                        <h3>International Engineering Standards</h3>
-                        <p>All designs adhere to IPC, ISO, and international standards ensuring global compatibility and reliability.</p>
-                    </div>
-                    <div class="why-card glass-card reveal">
-                        <div class="why-icon"><i class="fa-solid fa-shield-check"></i></div>
-                        <h3>High Reliability</h3>
-                        <p>Rigorous design validation, DFM checks, and testing protocols guarantee reliable operation in demanding environments.</p>
-                    </div>
-                    <div class="why-card glass-card reveal">
-                        <div class="why-icon"><i class="fa-solid fa-rocket"></i></div>
-                        <h3>Fast Delivery</h3>
-                        <p>Streamlined workflows and deep expertise enable rapid turnaround without compromising on quality or thoroughness.</p>
-                    </div>
-                    <div class="why-card glass-card reveal">
-                        <div class="why-icon"><i class="fa-solid fa-coins"></i></div>
-                        <h3>Affordable Pricing</h3>
-                        <p>Competitive rates with flexible engagement models delivering exceptional value for engineering services.</p>
-                    </div>
-                    <div class="why-card glass-card reveal">
-                        <div class="why-icon"><i class="fa-solid fa-file-lines"></i></div>
-                        <h3>Professional Documentation</h3>
-                        <p>Comprehensive design documentation including schematics, BOM, assembly drawings, and test reports.</p>
-                    </div>
-                    <div class="why-card glass-card reveal">
-                        <div class="why-icon"><i class="fa-solid fa-headset"></i></div>
-                        <h3>Engineering Support</h3>
-                        <p>Dedicated post-delivery support ensuring smooth transition from design to production and beyond.</p>
-                    </div>
-                    <div class="why-card glass-card reveal">
-                        <div class="why-icon"><i class="fa-solid fa-diagram-project"></i></div>
-                        <h3>End-to-End Development</h3>
-                        <p>Single point of contact from concept to manufacturing, reducing coordination overhead and accelerating timelines.</p>
-                    </div>
-                </div>
+              </div>
             </div>
-        </section>
-
-        <!--
-        ╔══════════════════════════════════════════════════════════╗
-        ║        SECTION 8: ENGINEERING DESIGN PROCESS            ║
-        ╚══════════════════════════════════════════════════════════╝
-        -->
-        <section id="process" class="process-section section-padding" aria-labelledby="process-heading">
-            <div class="section-container">
-                <div class="section-header reveal">
-                    <span class="section-tag">Our Process</span>
-                    <h2 id="process-heading" class="section-title">Engineering <span class="gradient-text">Design Process</span></h2>
-                    <p class="section-subtitle">A proven methodology ensuring quality and reliability at every stage of development.</p>
+            <div class="testimonial glass-card">
+              <p>"We needed a complex 8-layer embedded board on a tight schedule. AEE Labs provided professional layout and comprehensive DFM support. Highly recommended."</p>
+              <div class="client-info">
+                <div class="client-avatar">MK</div>
+                <div class="client-details">
+                  <strong>Michael K.</strong>
+                  <span>Senior Engineer, RoboCore Inc., USA</span>
                 </div>
-                <!-- Timeline -->
-                <div class="timeline">
-                    <div class="timeline-line" aria-hidden="true"></div>
-                    <div class="timeline-item reveal">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content glass-card">
-                            <span class="timeline-step">Step 01</span>
-                            <h3>Requirement Analysis</h3>
-                            <p>Detailed discussion of specifications, constraints, and project goals to establish a clear engineering roadmap.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item reveal">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content glass-card">
-                            <span class="timeline-step">Step 02</span>
-                            <h3>Concept Design</h3>
-                            <p>Architecture definition, block diagram creation, and key component selection based on performance requirements.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item reveal">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content glass-card">
-                            <span class="timeline-step">Step 03</span>
-                            <h3>Schematic Design</h3>
-                            <p>Detailed schematic capture with proper net labeling, design rule checks, and comprehensive annotation.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item reveal">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content glass-card">
-                            <span class="timeline-step">Step 04</span>
-                            <h3>Simulation</h3>
-                            <p>Circuit simulation using LTspice/MATLAB to verify performance, stability, and transient response before layout.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item reveal">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content glass-card">
-                            <span class="timeline-step">Step 05</span>
-                            <h3>PCB Layout</h3>
-                            <p>Optimized component placement and routing with attention to signal integrity, thermal management, and EMI/EMC.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item reveal">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content glass-card">
-                            <span class="timeline-step">Step 06</span>
-                            <h3>Design Review</h3>
-                            <p>Thorough review checklist covering electrical, mechanical, and manufacturing aspects before release.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item reveal">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content glass-card">
-                            <span class="timeline-step">Step 07</span>
-                            <h3>Gerber Generation</h3>
-                            <p>Manufacturing-ready output files with complete fabrication and assembly data packages.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item reveal">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content glass-card">
-                            <span class="timeline-step">Step 08</span>
-                            <h3>Prototype</h3>
-                            <p>Quick-turn PCB fabrication and assembly for initial bring-up, debugging, and performance validation.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item reveal">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content glass-card">
-                            <span class="timeline-step">Step 09</span>
-                            <h3>Testing</h3>
-                            <p>Comprehensive functional testing, environmental stress testing, and compliance verification.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item reveal">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content glass-card">
-                            <span class="timeline-step">Step 10</span>
-                            <h3>Production Support</h3>
-                            <p>Ongoing support during production ramp-up including yield optimization and field feedback integration.</p>
-                        </div>
-                    </div>
-                </div>
+              </div>
             </div>
-        </section>
-
-        <!--
-        ╔══════════════════════════════════════════════════════════╗
-        ║         SECTION 9: CUSTOMER TESTIMONIALS                ║
-        ╚══════════════════════════════════════════════════════════╝
-        -->
-        <section id="testimonials" class="testimonials-section section-padding" aria-labelledby="testimonials-heading">
-            <div class="section-container">
-                <div class="section-header reveal">
-                    <span class="section-tag">Testimonials</span>
-                    <h2 id="testimonials-heading" class="section-title">What Our <span class="gradient-text">Clients Say</span></h2>
+            <div class="testimonial glass-card">
+              <p>"Their expertise in KiCad and rapid prototyping saved us months of development. The reverse engineering service was thorough and accurate."</p>
+              <div class="client-info">
+                <div class="client-avatar">AR</div>
+                <div class="client-details">
+                  <strong>Ananya Reddy</strong>
+                  <span>Project Lead, MedTech Innovations, India</span>
                 </div>
-                <div class="testimonials-grid">
-                    <div class="testimonial-card glass-card reveal">
-                        <div class="testimonial-stars">★★★★★</div>
-                        <p class="testimonial-text">"AEE Labs delivered an exceptional 6-layer PCB design for our industrial controller. The attention to signal integrity and EMI considerations was outstanding. Highly recommended for complex designs."</p>
-                        <div class="testimonial-author">
-                            <div class="testimonial-avatar">
-                                <span>RK</span>
-                            </div>
-                            <div>
-                                <strong>Rajesh Kumar</strong>
-                                <span>Senior R&D Engineer, Industrial Automation Co.</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-card glass-card reveal">
-                        <div class="testimonial-stars">★★★★★</div>
-                        <p class="testimonial-text">"Working with Nikhil on our synchronous buck converter design was a pleasure. The prototype worked on the first attempt, and the documentation was thorough and professional."</p>
-                        <div class="testimonial-author">
-                            <div class="testimonial-avatar">
-                                <span>SP</span>
-                            </div>
-                            <div>
-                                <strong>Sarah Peterson</strong>
-                                <span>CTO, PowerTech Solutions</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-card glass-card reveal">
-                        <div class="testimonial-stars">★★★★★</div>
-                        <p class="testimonial-text">"AEE Labs provided excellent engineering consultation for our IoT product. The DFM analysis saved us significant costs during manufacturing. Truly world-class service from India."</p>
-                        <div class="testimonial-author">
-                            <div class="testimonial-avatar">
-                                <span>TM</span>
-                            </div>
-                            <div>
-                                <strong>Thomas Müller</strong>
-                                <span>Product Manager, Turing GmbH</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+              </div>
             </div>
-        </section>
-
-        <!--
-        ╔══════════════════════════════════════════════════════════╗
-        ║           SECTION 10: STATISTICS                        ║
-        ╚══════════════════════════════════════════════════════════╝
-        -->
-        <section id="stats" class="stats-section section-padding" aria-labelledby="stats-heading">
-            <div class="section-container">
-                <div class="section-header reveal">
-                    <h2 id="stats-heading" class="section-title">AEE Labs <span class="gradient-text">by the Numbers</span></h2>
+            <div class="testimonial glass-card">
+              <p>"Working with AEE Labs felt like having an in-house senior hardware team. The documentation and testing support were first-rate."</p>
+              <div class="client-info">
+                <div class="client-avatar">JL</div>
+                <div class="client-details">
+                  <strong>Jean-Luc Moreau</strong>
+                  <span>Founder, SmartEnergy Startup, France</span>
                 </div>
-                <div class="stats-grid">
-                    <div class="stat-card glass-card reveal">
-                        <div class="stat-icon-large"><i class="fa-solid fa-diagram-project"></i></div>
-                        <div class="stat-value"><span class="counter" data-target="150">0</span><span>+</span></div>
-                        <span class="stat-label-large">Projects Completed</span>
-                    </div>
-                    <div class="stat-card glass-card reveal">
-                        <div class="stat-icon-large"><i class="fa-solid fa-face-smile"></i></div>
-                        <div class="stat-value"><span class="counter" data-target="120">0</span><span>+</span></div>
-                        <span class="stat-label-large">Satisfied Customers</span>
-                    </div>
-                    <div class="stat-card glass-card reveal">
-                        <div class="stat-icon-large"><i class="fa-solid fa-print"></i></div>
-                        <div class="stat-value"><span class="counter" data-target="200">0</span><span>+</span></div>
-                        <span class="stat-label-large">PCB Designs</span>
-                    </div>
-                    <div class="stat-card glass-card reveal">
-                        <div class="stat-icon-large"><i class="fa-solid fa-clock"></i></div>
-                        <div class="stat-value"><span class="counter" data-target="8000">0</span><span>+</span></div>
-                        <span class="stat-label-large">Engineering Hours</span>
-                    </div>
-                    <div class="stat-card glass-card reveal">
-                        <div class="stat-icon-large"><i class="fa-solid fa-globe"></i></div>
-                        <div class="stat-value"><span class="counter" data-target="25">0</span><span>+</span></div>
-                        <span class="stat-label-large">Countries Served</span>
-                    </div>
-                </div>
+              </div>
             </div>
-        </section>
+          </div>
+          <div class="slider-controls">
+            <button class="slider-btn prev" id="prev-btn">←</button>
+            <button class="slider-btn next" id="next-btn">→</button>
+          </div>
+          <div class="slider-dots" id="slider-dots"></div>
+        </div>
+        <div class="happy-counter">
+          <span>Join <strong><span id="happy-count">50</span>+</strong> happy clients worldwide</span>
+        </div>
+      </div>
+    </section>
 
-        <!--
-        ╔══════════════════════════════════════════════════════════╗
-        ║           SECTION 11: FAQ SECTION                       ║
-        ╚══════════════════════════════════════════════════════════╝
-        -->
-        <section id="faq" class="faq-section section-padding" aria-labelledby="faq-heading">
-            <div class="section-container">
-                <div class="section-header reveal">
-                    <span class="section-tag">FAQ</span>
-                    <h2 id="faq-heading" class="section-title">Frequently Asked <span class="gradient-text">Questions</span></h2>
-                </div>
-                <div class="faq-list">
-                    <div class="faq-item glass-card reveal">
-                        <button class="faq-question" aria-expanded="false">
-                            <span>What PCB design tools do you use?</span>
-                            <i class="fa-solid fa-plus faq-icon"></i>
-                        </button>
-                        <div class="faq-answer">
-                            <p>We are proficient in KiCad, Altium Designer, and EasyEDA. We can work with your preferred tool or recommend the best one based on project complexity and your requirements. All design files are delivered in standard formats compatible with any EDA tool.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item glass-card reveal">
-                        <button class="faq-question" aria-expanded="false">
-                            <span>What is the typical turnaround time for a PCB design?</span>
-                            <i class="fa-solid fa-plus faq-icon"></i>
-                        </button>
-                        <div class="faq-answer">
-                            <p>Turnaround time depends on complexity. A 2-layer board may take 3-5 business days, while a 6-layer high-speed design can take 2-3 weeks. We always provide a detailed timeline during the proposal phase and are known for meeting deadlines consistently.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item glass-card reveal">
-                        <button class="faq-question" aria-expanded="false">
-                            <span>Do you provide manufacturing support after design completion?</span>
-                            <i class="fa-solid fa-plus faq-icon"></i>
-                        </button>
-                        <div class="faq-answer">
-                            <p>Yes! We offer complete manufacturing support including fab house liaison, component sourcing assistance, assembly oversight, and production debugging. Our DFM/DFA analysis ensures smooth transition to manufacturing.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item glass-card reveal">
-                        <button class="faq-question" aria-expanded="false">
-                            <span>What industries do you specialize in?</span>
-                            <i class="fa-solid fa-plus faq-icon"></i>
-                        </button>
-                        <div class="faq-answer">
-                            <p>We serve industrial automation, automotive, consumer electronics, medical devices, defense, IoT, renewable energy, electric vehicles, and robotics sectors. Our diverse experience enables cross-pollination of best practices.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item glass-card reveal">
-                        <button class="faq-question" aria-expanded="false">
-                            <span>How do you ensure confidentiality of our designs?</span>
-                            <i class="fa-solid fa-plus faq-icon"></i>
-                        </button>
-                        <div class="faq-answer">
-                            <p>We take confidentiality seriously. NDAs are signed before project commencement. All design files are stored securely, and we follow strict data protection protocols. Your intellectual property remains yours exclusively.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item glass-card reveal">
-                        <button class="faq-question" aria-expanded="false">
-                            <span>What payment terms do you offer?</span>
-                            <i class="fa-solid fa-plus faq-icon"></i>
-                        </button>
-                        <div class="faq-answer">
-                            <p>We offer flexible payment terms including milestone-based payments for larger projects. Typically, we require a small advance to begin work, with the balance due upon delivery and approval of design files.</p>
-                        </div>
-                    </div>
-                </div>
+    <!-- FAQ -->
+    <section id="faq" class="faq section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Frequently <span class="gradient-text">Asked Questions</span></h2>
+        </div>
+        <div class="faq-list">
+          <div class="faq-item glass-card">
+            <button class="faq-question">
+              <span>What is the typical design turnaround time?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2"/></svg>
+            </button>
+            <div class="faq-answer"><p>Most medium-complexity PCB designs are completed within 1-3 weeks, depending on layer count and routing complexity. Rush services are available.</p></div>
+          </div>
+          <div class="faq-item glass-card">
+            <button class="faq-question">
+              <span>How is pricing structured?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2"/></svg>
+            </button>
+            <div class="faq-answer"><p>We offer fixed-project pricing based on complexity, layers, and services required. A free initial consultation helps define scope and budget.</p></div>
+          </div>
+          <div class="faq-item glass-card">
+            <button class="faq-question">
+              <span>What is the maximum PCB layer count you handle?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2"/></svg>
+            </button>
+            <div class="faq-answer"><p>We routinely design up to 8+ layers and have experience with 12-layer high-speed digital boards.</p></div>
+          </div>
+          <div class="faq-item glass-card">
+            <button class="faq-question">
+              <span>Do you assist with manufacturing?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2"/></svg>
+            </button>
+            <div class="faq-answer"><p>Yes, we provide full manufacturing support: Gerber generation, BOM, pick-and-place files, assembly drawings, and vendor liaison.</p></div>
+          </div>
+          <div class="faq-item glass-card">
+            <button class="faq-question">
+              <span>Which design file formats do you deliver?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2"/></svg>
+            </button>
+            <div class="faq-answer"><p>We provide native source files (KiCad, Altium, etc.), Gerbers (RS-274X), ODB++, PDF schematics, BOM, and 3D models as required.</p></div>
+          </div>
+          <div class="faq-item glass-card">
+            <button class="faq-question">
+              <span>Do you sign NDAs?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2"/></svg>
+            </button>
+            <div class="faq-answer"><p>Absolutely. We treat all client intellectual property with strict confidentiality and are happy to sign NDA agreements before project kick-off.</p></div>
+          </div>
+          <div class="faq-item glass-card">
+            <button class="faq-question">
+              <span>Do you work with international clients?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2"/></svg>
+            </button>
+            <div class="faq-answer"><p>Yes, we serve clients worldwide via remote collaboration, video calls, and clear digital documentation. Time zone differences are managed efficiently.</p></div>
+          </div>
+          <div class="faq-item glass-card">
+            <button class="faq-question">
+              <span>What support do you provide after design completion?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2"/></svg>
+            </button>
+            <div class="faq-answer"><p>We offer post-design support including prototype debugging, design modifications, and production troubleshooting for a defined period.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Get In <span class="gradient-text">Touch</span></h2>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-info glass-card">
+            <h3>AEE Labs</h3>
+            <p>Telangana, India</p>
+            <p>Working Worldwide</p>
+            <div class="contact-detail">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <a href="tel:+917993769651">+91 7993769651</a>
             </div>
-        </section>
-
-        <!--
-        ╔══════════════════════════════════════════════════════════╗
-        ║           SECTION 12: CONTACT SECTION                   ║
-        ╚══════════════════════════════════════════════════════════╝
-        -->
-        <section id="contact" class="contact-section section-padding" aria-labelledby="contact-heading">
-            <div class="section-container">
-                <div class="section-header reveal">
-                    <span class="section-tag">Contact</span>
-                    <h2 id="contact-heading" class="section-title">Let's Build <span class="gradient-text">Together</span></h2>
-                    <p class="section-subtitle">Ready to transform your idea into production-ready hardware? Reach out today.</p>
-                </div>
-                <div class="contact-grid">
-                    <!-- Contact Form -->
-                    <div class="contact-form-wrapper glass-card reveal">
-                        <form id="contact-form" class="contact-form">
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="form-name">Full Name *</label>
-                                    <input type="text" id="form-name" name="name" placeholder="Your full name" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="form-email">Email Address *</label>
-                                    <input type="email" id="form-email" name="email" placeholder="your@email.com" required>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="form-company">Company</label>
-                                    <input type="text" id="form-company" name="company" placeholder="Your company name">
-                                </div>
-                                <div class="form-group">
-                                    <label for="form-phone">Phone</label>
-                                    <input type="tel" id="form-phone" name="phone" placeholder="+91 00000 00000">
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="form-project-type">Project Type *</label>
-                                    <select id="form-project-type" name="projectType" required>
-                                        <option value="">Select project type</option>
-                                        <option value="pcb-design">PCB Design</option>
-                                        <option value="power-electronics">Power Electronics</option>
-                                        <option value="embedded-hardware">Embedded Hardware</option>
-                                        <option value="consulting">Engineering Consultation</option>
-                                        <option value="full-development">Full Product Development</option>
-                                        <option value="other">Other</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="form-budget">Budget Range</label>
-                                    <select id="form-budget" name="budget">
-                                        <option value="">Select budget range</option>
-                                        <option value="under-1k">Under $1,000</option>
-                                        <option value="1k-5k">$1,000 - $5,000</option>
-                                        <option value="5k-15k">$5,000 - $15,000</option>
-                                        <option value="15k-50k">$15,000 - $50,000</option>
-                                        <option value="50k-plus">$50,000+</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group full-width">
-                                <label for="form-message">Project Description *</label>
-                                <textarea id="form-message" name="message" rows="5" placeholder="Describe your project requirements, goals, and any specific technical needs..." required></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary btn-submit">
-                                <span class="btn-icon"><i class="fa-solid fa-paper-plane"></i></span>
-                                Send Message
-                                <span class="btn-shine"></span>
-                            </button>
-                        </form>
-                    </div>
-                    <!-- Contact Info -->
-                    <div class="contact-info-wrapper reveal">
-                        <div class="contact-info-card glass-card">
-                            <div class="contact-info-item">
-                                <div class="contact-info-icon"><i class="fa-solid fa-phone"></i></div>
-                                <div>
-                                    <h4>Phone</h4>
-                                    <a href="tel:+917993769651">+91 7993769651</a>
-                                </div>
-                            </div>
-                            <div class="contact-info-item">
-                                <div class="contact-info-icon"><i class="fa-solid fa-envelope"></i></div>
-                                <div>
-                                    <h4>Email</h4>
-                                    <a href="mailto:buildwithnikhill@gmail.com">buildwithnikhill@gmail.com</a>
-                                </div>
-                            </div>
-                            <div class="contact-info-item">
-                                <div class="contact-info-icon"><i class="fa-solid fa-location-dot"></i></div>
-                                <div>
-                                    <h4>Location</h4>
-                                    <span>Telangana, India</span>
-                                </div>
-                            </div>
-                            <div class="contact-info-item">
-                                <div class="contact-info-icon"><i class="fa-solid fa-globe"></i></div>
-                                <div>
-                                    <h4>Service Area</h4>
-                                    <span>Worldwide Engineering Services</span>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Google Maps Placeholder -->
-                        <div class="map-placeholder glass-card">
-                            <div class="map-inner">
-                                <i class="fa-solid fa-map-location-dot"></i>
-                                <span>Telangana, India</span>
-                                <small>Worldwide Remote Services Available</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="contact-detail">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <a href="mailto:buildwithnikhill@gmail.com">buildwithnikhill@gmail.com</a>
             </div>
-        </section>
-
-        <!--
-        ╔══════════════════════════════════════════════════════════╗
-        ║           SECTION 13: FOOTER                            ║
-        ╚══════════════════════════════════════════════════════════╝
-        -->
-        <footer class="footer" role="contentinfo">
-            <div class="footer-container">
-                <div class="footer-grid">
-                    <!-- Brand Column -->
-                    <div class="footer-col footer-brand-col">
-                        <a href="#hero" class="footer-logo">
-                            <svg class="logo-icon" viewBox="0 0 48 48" width="36" height="36">
-                                <rect x="4" y="4" width="40" height="40" rx="8" fill="none" stroke="var(--accent-cyan)" stroke-width="2"/>
-                                <path d="M10 28 L20 14 L30 28 L40 14" stroke="var(--accent-cyan)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                                <circle cx="25" cy="26" r="3" fill="var(--accent-orange)"/>
-                            </svg>
-                            <span class="footer-logo-text">AEE<span>Labs</span></span>
-                        </a>
-                        <p class="footer-description">Professional PCB Design, Power Electronics, and Embedded Hardware Development. Transforming ideas into production-ready hardware.</p>
-                        <div class="footer-social">
-                            <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-                            <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-                            <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
-                            <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
-                        </div>
-                    </div>
-                    <!-- Quick Links -->
-                    <div class="footer-col">
-                        <h4>Quick Links</h4>
-                        <ul>
-                            <li><a href="#about">About Us</a></li>
-                            <li><a href="#services">Services</a></li>
-                            <li><a href="#projects">Portfolio</a></li>
-                            <li><a href="#process">Design Process</a></li>
-                            <li><a href="#contact">Contact</a></li>
-                        </ul>
-                    </div>
-                    <!-- Services Links -->
-                    <div class="footer-col">
-                        <h4>Services</h4>
-                        <ul>
-                            <li><a href="#services">PCB Design</a></li>
-                            <li><a href="#services">Power Electronics</a></li>
-                            <li><a href="#services">Embedded Hardware</a></li>
-                            <li><a href="#services">DFM / DFA</a></li>
-                            <li><a href="#services">Consultation</a></li>
-                        </ul>
-                    </div>
-                    <!-- Contact Links -->
-                    <div class="footer-col">
-                        <h4>Contact</h4>
-                        <ul>
-                            <li><a href="tel:+917993769651">+91 7993769651</a></li>
-                            <li><a href="mailto:buildwithnikhill@gmail.com">Email Us</a></li>
-                            <li><span>Telangana, India</span></li>
-                            <li><span>Worldwide Services</span></li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- Footer Bottom -->
-                <div class="footer-bottom">
-                    <p>&copy; <span id="current-year">2024</span> AEE Labs. All rights reserved.</p>
-                    <div class="footer-bottom-links">
-                        <a href="#">Privacy Policy</a>
-                        <span class="footer-divider">|</span>
-                        <a href="#">Terms of Service</a>
-                    </div>
-                </div>
+            <div class="map-placeholder glass-card">
+              <span>📍 Telangana, India</span>
+              <div class="map-frame">Map Placeholder</div>
             </div>
-        </footer>
+          </div>
+          <form class="contact-form glass-card" id="contact-form">
+            <div class="form-row">
+              <input type="text" placeholder="Full Name *" required>
+              <input type="email" placeholder="Email Address *" required>
+            </div>
+            <div class="form-row">
+              <input type="text" placeholder="Company">
+              <input type="text" placeholder="Country">
+            </div>
+            <div class="form-row">
+              <input type="tel" placeholder="Phone Number">
+              <select required>
+                <option value="">Project Type *</option>
+                <option>PCB Design</option>
+                <option>Schematic Design</option>
+                <option>Hardware Architecture</option>
+                <option>Embedded Hardware</option>
+                <option>Power Electronics</option>
+                <option>Product Development</option>
+                <option>PCB Review</option>
+                <option>Reverse Engineering</option>
+                <option>Manufacturing Support</option>
+                <option>Consultation</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <select required>
+                <option value="">Budget Range *</option>
+                <option>Under $1,000</option>
+                <option>$1,000 - $5,000</option>
+                <option>$5,000 - $15,000</option>
+                <option>$15,000 - $50,000</option>
+                <option>$50,000+</option>
+              </select>
+            </div>
+            <textarea placeholder="Describe your project, requirements, and goals..." rows="5" required></textarea>
+            <div class="form-upload">
+              <label class="upload-btn" for="file-upload">📎 Upload Requirement (optional)</label>
+              <input type="file" id="file-upload" hidden>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit Inquiry</button>
+            <div class="form-success" id="form-success">Thank you! We'll respond within 24 hours.</div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
 
-    </main>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <svg viewBox="0 0 40 40" width="40" height="40">
+            <circle cx="20" cy="20" r="18" fill="none" stroke="var(--cyan)" stroke-width="2"/>
+            <text x="20" y="26" text-anchor="middle" fill="var(--cyan)" font-family="Orbitron" font-size="12" font-weight="900">AEE</text>
+          </svg>
+          <span>AEE Labs</span>
+        </div>
+        <p>Professional PCB Design & Hardware Development</p>
+        <div class="social-links">
+          <a href="#" aria-label="GitHub"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" fill="currentColor"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" fill="currentColor"/></svg></a>
+          <a href="mailto:buildwithnikhill@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.72 12 9.64l6.545-4.92 1.528-1.227C21.69 2.28 24 3.434 24 5.457z" fill="currentColor"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#industries">Industries</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-newsletter">
+        <h4>Newsletter</h4>
+        <p>Receive engineering insights and updates.</p>
+        <form class="newsletter-form" id="newsletter-form">
+          <input type="email" placeholder="your@email.com" required>
+          <button type="submit" class="btn btn-small">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom container">
+      <p>&copy; 2026 AEE Labs. All Rights Reserved. Designed with Engineering Excellence.</p>
+    </div>
+  </footer>
 
-    <!--
-    ╔══════════════════════════════════════════════════════════════╗
-    ║              BACK TO TOP BUTTON                             ║
-    ╚══════════════════════════════════════════════════════════════╝
-    -->
-    <button id="back-to-top" class="back-to-top" aria-label="Back to top" title="Back to top">
-        <i class="fa-solid fa-arrow-up"></i>
-    </button>
+  <!-- Back to Top -->
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
 
-    <!--
-    ╔══════════════════════════════════════════════════════════════╗
-    ║              FLOATING CONTACT BUTTON                        ║
-    ╚══════════════════════════════════════════════════════════════╝
-    -->
-    <a href="#contact" class="floating-contact" aria-label="Contact us" title="Get a Quote">
-        <i class="fa-solid fa-message"></i>
-        <span class="floating-pulse"></span>
-    </a>
-
-    <!-- Main JavaScript -->
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
